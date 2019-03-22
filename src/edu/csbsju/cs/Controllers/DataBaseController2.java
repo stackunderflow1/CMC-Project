@@ -1,27 +1,45 @@
+/* packages
+*/
 package edu.csbsju.cs.Controllers;
-
+/* imports
+*/
 import java.io.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
 import edu.csbsju.cs.Entity.SavedSchools;
 import edu.csbsju.cs.Entity.University;
 import edu.csbsju.cs.Entity.Users;
-
 import java.util.*;
-
+/**
+ * This class is the Database controller that allows a user to access the database.
+ * @StackUnderflow
+ * @author DeAndre Bethell, Nathan Drees, Anton Andrews, Ryan Graham, Noah Lefebvre
+ * @version March 2019
+ */
 public class DataBaseController2 {
-
+/** private instance variables
+*/
 private UniversityDBLibrary univDBlib;
 
 
-
+	/** @param String username, String password
+	*@return 
+	*/
 	public void DBLibraryDriver(String username, String password){
 		univDBlib = new UniversityDBLibrary(username,password);
 	}
-  
+  	/*@param
+	*@returns UniversityDBLibrary univDBlib
+	*/
 	public UniversityDBLibrary getUnivDBlib(){
 		return univDBlib;
 	}
-  
+  	/** 
+  	*displays the information inside of the table
+	*
+	*@param String [][]table, PrintWriter pw, Int topx
+	*
+	*@returns
+	*/
 	public void display(String[][] table, PrintWriter pw, int topx) {
 	    
 	    if(table!=null){
@@ -39,11 +57,13 @@ private UniversityDBLibrary univDBlib;
 	    }
 	  }
 
-/**
- * @return 
- * 
- */
-
+	/**
+   	* Allows the user to get all the school details from the database
+   	* 
+   	* @param 
+   	* 
+   	* @return newSchoolList /an entity with the information of the university
+ 	*/
 	public static ArrayList<University> getAllSchoolDetails() {
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
 		String [][] allSchools = dbld.getUnivDBlib().university_getUniversities();
@@ -79,6 +99,13 @@ private UniversityDBLibrary univDBlib;
 	
 	return newSchoolList;
 }
+	/**
+   	* Allows the user to get all the users in the database
+   	* 
+   	* @param 
+   	* 
+   	* @return newUserList / an entity with the information on the users
+ 	*/
 	public static ArrayList<Users> getAllUsers() {
 	
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
@@ -95,7 +122,12 @@ private UniversityDBLibrary univDBlib;
 		}
 		return newUserList;
 	}
-
+	/**
+	* Allows the users to add a university to the database
+	*@param University uni/ university to be added in the database
+	*@returns schoolAdded
+	*
+	*/
 	public static int addUniversity(University uni) {
 		int schoolAdded = 0;
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
@@ -120,7 +152,12 @@ private UniversityDBLibrary univDBlib;
 
 		return schoolAdded;
 	}
-
+	/**
+	* Allows the users to add a user to the database
+	*@param Users use/ user to be added in the database
+	*@returns addSuccess
+	*
+	*/
 	public static int addUser(Users use) {
 		int addSuccess = 0;
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
@@ -132,7 +169,12 @@ private UniversityDBLibrary univDBlib;
 		}
 		return addSuccess;
 	}
-
+	/**
+	* Allows the users to delete a university from the database
+	*@param University uni/ school to be deleted in the database
+	*@returns success
+	*
+	*/
 	public static int deleteSchool(University uni) {
 		int success = 0;
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
@@ -152,7 +194,12 @@ private UniversityDBLibrary univDBlib;
 		}
 		return success;
 	}
-	
+	/**
+	* Allows the users to edit a university in the database
+	*@param University uni0, University uni to be edited in the database
+	*@returns success
+	*
+	*/
 	public static int editSchool(University uniO, University uni) {
 		int success = 0;
 		
@@ -188,7 +235,12 @@ private UniversityDBLibrary univDBlib;
 		
 		return success;
 	}
-	
+	/**
+	* Allows the users to delete a user from the database
+	*@param Users u/ user that is to be deleted in the database
+	*@returns success
+	*
+	*/
 	public static int deleteUser(Users u) {
 		int success = 0;
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
@@ -199,7 +251,12 @@ private UniversityDBLibrary univDBlib;
 		
 		return success;
 	}
-	
+	/**
+	* Allows the users to edit a user in the database
+	*@param Users u/ user to be edited in the database
+	*@returns success
+	*
+	*/
 	public static int editUser(Users u) {
 		int success = 0;
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
@@ -213,13 +270,18 @@ private UniversityDBLibrary univDBlib;
 		
 		return success;
 	}
-	
+	/**
+	* Allows the users to get saved schools in the database
+	*@param Users u
+	*@returns savedSchools
+	*
+	*/
 	public static ArrayList<SavedSchools> getSavedSchools(Users u){
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
 		String [][] allSavedSchools = dbld.getUnivDBlib().user_getUsernamesWithSavedSchools();
 		ArrayList<SavedSchools> savedSchools = new ArrayList<SavedSchools>();
 		
-		for (int i = 0; i < allSavedSchools.length; i++) {
+		for (int i = 0; i < allSavedSchools.length; i++) {a University entity with the information of the university
 			if (allSavedSchools[i][0].equals(u.getUsername())) {
 				SavedSchools school = new SavedSchools(allSavedSchools[i][0], allSavedSchools[i][1], allSavedSchools[i][2]);
 				savedSchools.add(school);
@@ -227,7 +289,12 @@ private UniversityDBLibrary univDBlib;
 		}
 		return savedSchools;
 	}
-	
+	/**
+	* Allows the users to remove saved schools from the database
+	*@param SavedSchools school
+	*@returns success
+	*
+	*/
 	public static int removeSavedSchool(SavedSchools school) {
 		int success = 0;
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");	
@@ -237,7 +304,12 @@ private UniversityDBLibrary univDBlib;
 		}
 		return success;
 	}
-	
+	/**
+	* Allows the users to save schools in the database
+	*@param String uName, String school
+	*@returns success
+	*
+	*/
 	public static int saveSchool(String uName, String school) {
 		int success = 0;
 		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");	
