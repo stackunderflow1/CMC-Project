@@ -1,23 +1,35 @@
+/**
+*packages
+*/
 package edu.csbsju.cs.Entity;
-
+/**
+*imports
+*/
 import java.util.*;
+/**
+ *stackUnderflow1
+ *@author Anton Andrews, Ryan Graham, Nathan Drees, Noah Lefebvre, DeAndre Bethell
+ *@version March 2019
+ */
 
 /**
- * 
- */
-/**package DatabaseLibrary
-/**
- * @author aandrews002
- *
+ * University Entity that stores all the information pertaining to a university.
  */
 public class University {
+/**
+*instance variables
+*/
 private String name, state, location, control;
 private int numStudents, numApplicants, academicScale, socialScale, qOLScale;
 private double enrolled, SATV, SATM, expenses, financialAid,  admitted, females;
 private ArrayList<String> emphases;
 
 	/**
-	 * 
+	* Lists information on a specific University
+	* @param String name, state, location,control 
+	* @param Double females, SATV, SATM, expenses, financialAid, admitted, enrolled
+	*@param Int numStudents, numApplicants, acedemicScale, socialScale, q0LScale
+	*@param ArrayList<String> emphasess
 	 */
 	public University(String name, String state, String location, String control, int numStudents, 
 			 double females, double SATV, double SATM, double expenses, double financialAid, 
@@ -40,7 +52,7 @@ private ArrayList<String> emphases;
 		this.academicScale = academicScale;
 		this.socialScale = socialScale;
 		this.qOLScale = qOLScale;
-		this.emphases = emphasess;
+		this.emphases = emphasess; //School emphases
 	}
 	
 	/*while i < 
@@ -50,18 +62,26 @@ private ArrayList<String> emphases;
 	
 
 	/**
-	 * @return the state
+	 * gets the Name of the University
+	 *@param 
+	 * @return the state/ this.name
 	 */
 	public String getName() {
 		return this.name;
 	}
-	
+	/**
+	 * gets the state of the University
+	 *@param 
+	 * @return the state/ this.state
+	 */
 	public String getState() {
 		return this.state;
 	}
 
 	/**
-	 * @return the location
+	 * gets the location of the University
+	 *@param 
+	 * @return the location/ this.location
 	 */
 	public String getLocation() {
 		return this.location;
@@ -70,7 +90,9 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the control
+	 * gets the control of the university
+	 *@param 
+	 * @return the control of the university/ this.control
 	 */
 	public String getControl() {
 		return this.control;
@@ -79,7 +101,9 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the numStudents
+	 * gets the getNumStudents
+	 *@param 
+	 * @return the number of students/ this.numStudents
 	 */
 	public int getNumStudents() {
 		return this.numStudents;
@@ -88,7 +112,9 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the numApplicants
+	 * gets the number of applicants to a specific University
+	 *@param 
+	 * @return the number of applicants/ this.numApplicants
 	 */
 	public int getNumApplicants() {
 		return this.numApplicants;
@@ -97,7 +123,9 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the academicScale
+	 * gets the application scale of the University
+	 *@param 
+	 * @return the academic scale/ this.academicScale
 	 */
 	public int getAcademicScale() {
 		return this.academicScale;
@@ -106,7 +134,9 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the socialScale
+	 * gets the social scale of the University
+	 *@param 
+	 * @return the social scale/ this.socialScale
 	 */
 	public int getSocialScale() {
 		return this.socialScale;
@@ -115,7 +145,9 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the qOLScale
+	 * gets the q0L scale of the University
+	 *@param 
+	 * @return the q0L scale/ this.q0LScale
 	 */
 	public int getqOLScale() {
 		return this.qOLScale;
@@ -124,7 +156,9 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the enrolled
+	 * gets the number of students enrolled at the University
+	 *@param 
+	 * @return the number of students enrolled at the university/ this.enrolled
 	 */
 	public double getEnrolled() {
 		return this.enrolled;
@@ -133,7 +167,9 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the sATV
+	 * gets the sATV score of a university
+	 *@param
+	 * @return the sATV score of a university/ this.SATV
 	 */
 	public double getSATV() {
 		return this.SATV;
@@ -142,28 +178,36 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the sATM
+	 * gets the sATM score of a university
+	 *@param
+	 * @return the sATM score of a university/ this.SATM
 	 */
 	public double getSATM() {
 		return this.SATM;
 	}
 
 	/**
-	 * @return the expenses
+	 * gets the expenses of a university
+	 *@param
+	 * @return the expenses of a university/ this.expenses
 	 */
 	public double getExpenses() {
 		return this.expenses;
 	}
 
 	/**
-	 * @return the financialAid
+	 * gets the financial aid of a university
+	 *@param
+	 * @return the financial aid of a university/ this.financialAid
 	 */
 	public double getFinancialAid() {
 		return this.financialAid;
 	}
 
 	/**
-	 * @return the admitted
+	 * gets the number of students admitted to a university
+	 *@param
+	 * @return the number of students admitted to a university/ this.admitted
 	 */
 	public double getAdmitted() {
 		return this.admitted;
@@ -172,16 +216,26 @@ private ArrayList<String> emphases;
 
 
 	/**
-	 * @return the females
+	 * gets the number of female students admitted to a university
+	 *@param
+	 * @return the number of female students admitted to a university/ this.females
 	 */
 	public double getFemales() {
 		return this.females;
 	}
-
+	/**
+	 * gets the emphases of a university
+	 *@param
+	 * @return the emphases of a university/ this.emphases
+	 */
 	public ArrayList<String> getEmphases(){
 		return this.emphases;
 	}
-	
+	/**
+	 * prints all of the information aforementioned
+	 *@param
+	 * @return s
+	 */
 	public String print()
 	{
 		String s = this.name + " " + this.state + " " + this.location + " " + 
