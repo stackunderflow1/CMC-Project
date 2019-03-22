@@ -1,179 +1,115 @@
+package src.edu.csbsju.cs.Controllers;
+import src.edu.csbsju.cs.Entity.*;
 import java.util.ArrayList;
 
 public class searchSchools {
 	
-	public static ArrayList<String> searchAllSchools(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale)
+	public static ArrayList<University> searchAllSchools(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale) throws NumberFormatException
 	{
-		/*String state;
-		int numStudents;
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter State:");
 		
-		state = sc.nextLine();
 		
-		state.toLowerCase();
-		System.out.println("Enter minimum number of students");
-		numStudents = sc.nextInt();*/
-	
-		
-		ArrayList<University> schools = DataBaseController2.getAllSchoolsDetails();
-		String[][] list = new String[schools.size()][2];
-		ArrayList<String> info = new ArrayList<String>();
+		ArrayList<University> schools = DataBaseController2.getAllSchoolDetails();
+		ArrayList<University> schools2 = (ArrayList<University>) schools.clone();
 
-		int num = 0;
-		int passed = 0;
-		if(name != null && !name.equals(""))
-		{
-			passed++;
-		}
-		if(state != null && !state.equals(""))
-		{
-			passed++;
-		}
-		if(location != null && !location.equals(""))
-		{
-			passed++;
-		}
-		if(control != null && !control.equals(""))
-		{
-			passed++;
-		}
-		if(numStudents != null && !numStudents.equals(""))
-		{
-			passed++;
-		}
-		if(females != null && !females.equals(""))
-		{
-			passed++;
-		}
-		if(SATV != null && !SATV.equals(""))
-		{
-			passed++;
-		}
-		if(SATM != null && !SATM.equals(""))
-		{
-			passed++;
-		}
-		if(expenses != null && !expenses.equals(""))
-		{
-			passed++;
-		}
-		if(financialAid != null && !financialAid.equals(""))
-		{
-			passed++;
-		}
-		if(numApplicants != null && !numApplicants.equals(""))
-		{
-			passed++;
-		}
-		if(admitted != null && !admitted.equals(""))
-		{
-			passed++;
-		}
-		if(enrolled != null && !enrolled.equals(""))
-		{
-			passed++;
-		}
-		if(academicScale != null && !academicScale.equals(""))
-		{
-			passed++;
-		}
-		if(socialScale != null && !socialScale.equals(""))
-		{
-			passed++;
-		}
-		if(qOLScale != null && !qOLScale.equals(""))
-		{
-			passed++;
-		}
-		
 		for(int i =0; i<schools.size(); i++)
 		{
-			if(schools.get(i).getName().contains(name) && !name.equals("") && !name.equals(null))
-			{
-				num++;
+			if(!name.equals(null) && !name.equals("-1") && !name.equals("")) {
+			if(schools.get(i).getName().toLowerCase().indexOf(name.toLowerCase())< 0)
+					{
+				schools2.remove(schools.get(i));
+					}
 			}
-			if(schools.get(i).getState().equals(state) && !state.equals("") && !state.equals(null))
+			if(!state.equals(null) && !state.equals("-1") && !state.equals("")) {
+			if(schools.get(i).getState().toLowerCase().indexOf(state.toLowerCase())<0 )
 			{
-				num++;
+				schools2.remove(schools.get(i));
 			}
-			if(schools.get(i).getLocation().equals(location) && !location.equals("") && !location.equals(null))
+			}
+			if(!location.equals(null) && !location.equals("-1") && !location.equals("")) {
+			if(schools.get(i).getLocation().toLowerCase().indexOf(location.toLowerCase())< 0 )
 			{
-				num++;
+				schools2.remove(schools.get(i));
 			}
-			if(schools.get(i).getControl().equals(control) && !control.equals("") && !control.equals(null))
+			}
+			if(!control.equals(null) && !control.equals("-1") && !control.equals("")) {
+			if(schools.get(i).getControl().toLowerCase().indexOf(control.toLowerCase())<0 )
 			{
-				num++;
+				schools2.remove(schools.get(i));
 			}
-			if(Integer.toString(schools.get(i).getNumStudents()).equals(numStudents) && !numStudents.equals("") && !numStudents.equals(null))
+			}
+			if(!numStudents.equals(null) && !numStudents.equals("-1") && !numStudents.equals("")) {
+			if(!(-1 < schools.get(i).getNumStudents() && schools.get(i).getNumStudents() <= (Integer.parseInt(numStudents))))
 			{
-				num++;
-			}
-			if(Double.toString(schools.get(i).getFemales()).equals(females) && !females.equals("") && !females.equals(null))
+				schools2.remove(schools.get(i));
+			}}
+			if(!females.equals(null) && !females.equals("-1") && !females.equals("")) {
+			if(!(-1.0 < schools.get(i).getFemales() && schools.get(i).getFemales() <= (Double.parseDouble(females))))
 			{
-				num++;
-			}
-			if(Double.toString(schools.get(i).getSATV()).equals(SATV) && !SATV.equals("") && !SATV.equals(null))
-			{
-				num++;
-			}
-			if(Double.toString(schools.get(i).getSATM()).equals(SATM) && !SATM.equals("") && !SATM.equals(null))
-			{
-				num++;
-			}
-			if(Double.toString(schools.get(i).getExpenses()).equals(expenses) && !expenses.equals("") && !expenses.equals(null))
-			{
-				num++;
-			}
-			if(Double.toString(schools.get(i).getFinancialAid()).equals(financialAid) && !financialAid.equals("") && !financialAid.equals(null))
-			{
-				num++;
-			}
-			if(Integer.toString(schools.get(i).getNumApplicants()).equals(numApplicants) && !numApplicants.equals("") && !numApplicants.equals(null))
-			{
-				num++;
-			}
-			if(Double.toString(schools.get(i).getAdmitted()).equals(admitted) && !admitted.equals("") && !admitted.equals(null))
-			{
-				num++;
-			}
-			if(Double.toString(schools.get(i).getEnrolled()).equals(enrolled) && !enrolled.equals("") && !enrolled.equals(null))
-			{
-				num++;
-			}
-			if(Integer.toString(schools.get(i).getAcademicScale()).equals(academicScale) && !academicScale.equals("") && !academicScale.equals(null))
-			{
-				num++;
-			}
-			if(Integer.toString(schools.get(i).getSocialScale()).equals(socialScale) && !socialScale.equals("") && !socialScale.equals(null))
-			{
-				num++;
-			}
-			if(Integer.toString(schools.get(i).getqOLScale()).equals(qOLScale) && !qOLScale.equals("") && !qOLScale.equals(null))
-			{
-				num++;
-			}
+				schools2.remove(schools.get(i));
+			}}
 			
-			list[i][0] = schools.get(i).getName();
-			list[i][1] = Integer.toString(num);
-		}
-		for(int i = 0; i<list.length; i++)
-		{
-			if(list[i][1].equals(Integer.toString(passed)))
+			if(!SATV.equals(null) && !SATV.equals("-1") && !SATV.equals("")) {
+				if(!(-1.0 < schools.get(i).getSATV() && schools.get(i).getSATV() <= (Double.parseDouble(SATV))))
 			{
-				info.add(list[i][0]);
+					schools2.remove(schools.get(i));
 			}
+			}
+			if(SATM != (null) && !SATM.equals("-1") && !SATM.equals("")) {
+			if(!(-1.0 < schools.get(i).getSATM() && schools.get(i).getSATM() <= (Double.parseDouble(SATM))))
+			{
+				schools2.remove(schools.get(i));
+			}}
+			if(!expenses.equals(null) && !expenses.equals("-1") && !expenses.equals("")) {
+			if(!(-1.0 < schools.get(i).getExpenses() && schools.get(i).getExpenses() <= (Double.parseDouble(expenses))))
+			{
+				schools2.remove(schools.get(i));
+			}}
+			if(!financialAid.equals(null) && !financialAid.equals("-1") && !financialAid.equals("")) {
+			if(!(-1.0 < schools.get(i).getFinancialAid() && schools.get(i).getFinancialAid() <= (Double.parseDouble(financialAid))))
+			{
+				schools2.remove(schools.get(i));
+			}}
+			if(!numApplicants.equals(null) && !numApplicants.equals("-1") && !numApplicants.equals("")) {
+			if(!(-1 < schools.get(i).getNumApplicants() && schools.get(i).getNumApplicants() <= (Integer.parseInt(numApplicants))))
+			{
+				schools2.remove(schools.get(i));
+			}}
+			if(!admitted.equals(null) && !admitted.equals("-1") && !admitted.equals("")) {
+			if(!(-1.0 < schools.get(i).getAdmitted() && schools.get(i).getAdmitted() <= (Double.parseDouble(admitted))))
+			{
+				schools2.remove(schools.get(i));
+			}}
+			if(!enrolled.equals(null) && !enrolled.equals("-1")&& !enrolled.equals("")) {
+			if(!(-1.0 < schools.get(i).getEnrolled() && schools.get(i).getEnrolled() <= (Double.parseDouble(enrolled))))
+			{
+				schools2.remove(schools.get(i));
+			}}
+			if(!academicScale.equals(null)&& !academicScale.equals("-1") && !academicScale.equals("")) {
+			if(!(-1 < schools.get(i).getAcademicScale() && schools.get(i).getAcademicScale() <= (Integer.parseInt(academicScale))))
+			{
+				schools2.remove(schools.get(i));
+			}}
+			if(!socialScale.equals(null) && !socialScale.equals("-1") && !socialScale.equals("")) {
+			if(!(-1 < schools.get(i).getSocialScale() && schools.get(i).getSocialScale() <= (Integer.parseInt(socialScale))))
+			{
+				schools2.remove(schools.get(i));
+			}}
+			if(!qOLScale.equals(null) && !qOLScale.equals("-1") && !qOLScale.equals("")) {
+			if(!(-1 < schools.get(i).getqOLScale() && schools.get(i).getqOLScale() <= (Integer.parseInt(qOLScale))))
+			{
+				schools2.remove(schools.get(i));
+			}}
+				
+					}
+		return schools2;
 		}
 		
 		
-	/*	while(i<schools.size()) {
-			University u1 = schools.get(i);
-			if (u1.getState().toLowerCase().equals(state) && numStudents <= u1.getNumStudents()) {
-					list.add(u1);
-			}
-			i++;
-		}*/
-		//sc.close();
-		return info;
+	public static void main(String[] args)
+	{
+	ArrayList<University> neww = searchAllSchools("", "", "", "", "", "", "", "", "", "", "", "","", "", "", "");
+	for(int i = 0; i< neww.size(); i++) {
+		System.out.println(neww.get(i).getName());
+	}
 	}
 }
