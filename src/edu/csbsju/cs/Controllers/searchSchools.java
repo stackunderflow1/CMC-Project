@@ -1,5 +1,3 @@
-package edu.csbsju.cs.Controllers;
-import edu.csbsju.cs.Entity.*;
 import java.util.ArrayList;
 
 public class searchSchools {
@@ -12,12 +10,13 @@ public class searchSchools {
 		System.out.println("Enter State:");
 		
 		state = sc.nextLine();
+		
 		state.toLowerCase();
 		System.out.println("Enter minimum number of students");
 		numStudents = sc.nextInt();*/
 	
 		
-		ArrayList<University> schools = DataBaseController2.getAllSchoolDetails();
+		ArrayList<University> schools = DataBaseController2.getAllSchoolsDetails();
 		String[][] list = new String[schools.size()][2];
 		ArrayList<String> info = new ArrayList<String>();
 
@@ -155,9 +154,8 @@ public class searchSchools {
 				num++;
 			}
 			
-		
-		list[i][0] = schools.get(i).getName();
-		list[i][1] = Integer.toString(num);
+			list[i][0] = schools.get(i).getName();
+			list[i][1] = Integer.toString(num);
 		}
 		for(int i = 0; i<list.length; i++)
 		{
