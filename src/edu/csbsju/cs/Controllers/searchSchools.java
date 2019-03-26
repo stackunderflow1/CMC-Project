@@ -107,7 +107,11 @@ public class searchSchools {
 		
 	public static void main(String[] args)
 	{
+<<<<<<< HEAD
 	ArrayList<University> neww = searchAllSchools("a", "t", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1", "-1","-1", "-1", "-1", "-1");
+=======
+	ArrayList<University> neww = searchAllSchools("", "", "", "", "", "", "", "", "", "", "", "","", "", "", "");
+>>>>>>> 2d8d3b1db98685ea8a89f636ad93846d95b99ae5
 	for(int i = 0; i< neww.size(); i++) {
 		System.out.println(neww.get(i).getName());
 	}

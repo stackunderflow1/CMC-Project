@@ -1,0 +1,1 @@
+INDEX VERSION 1.130+/net/home/aandrews002/eclipse-workspace/CMC-Project/.metadata/.plugins/org.eclipse.jdt.core

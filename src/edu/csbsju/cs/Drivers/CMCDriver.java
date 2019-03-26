@@ -9,7 +9,30 @@ import java.util.*;
 public class CMCDriver {
 	
 	public static void main(String[]args) {
-		Scanner sc = new Scanner(System.in);
+		
+		String uName = "juser";
+		String password = "user";
+		
+		String logIn = LogOnController.logOn(uName, password);		
+		if (logIn.equals("logged in as User")){
+			
+		}
+		else if (logIn.equals("logged in as Admin")) {
+			
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/**Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Username: ");
 		String uName = sc.nextLine();
 		System.out.println("Enter Password: ");
@@ -96,7 +119,7 @@ public class CMCDriver {
 			}
 			
 		}
-		
+		*/
 	}
 	
 }
