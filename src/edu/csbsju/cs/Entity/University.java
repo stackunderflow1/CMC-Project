@@ -69,6 +69,10 @@ private ArrayList<String> emphases;
 	public String getName() {
 		return this.name;
 	}
+	
+	public void setName(String name){
+		this.name = name.toUpperCase;
+	}
 	/**
 	 * gets the state of the University
 	 *@param 
@@ -76,6 +80,10 @@ private ArrayList<String> emphases;
 	 */
 	public String getState() {
 		return this.state;
+	}
+	
+	public void setState(String state){
+		this.schoolName = state.toUpperCase;
 	}
 
 	/**
@@ -87,6 +95,9 @@ private ArrayList<String> emphases;
 		return this.location;
 	}
 
+	public void setLocation(String location){
+		this.location = location.toUpperCase;
+	}
 
 
 	/**
@@ -98,6 +109,9 @@ private ArrayList<String> emphases;
 		return this.control;
 	}
 
+	public void setControl(String control){
+		this.control = control.toUpperCase;
+	}
 
 
 	/**
@@ -107,6 +121,10 @@ private ArrayList<String> emphases;
 	 */
 	public int getNumStudents() {
 		return this.numStudents;
+	}
+	
+	public void setNumStudents(int numStudents){
+		this.numStudents = numStudents;
 	}
 
 
@@ -120,6 +138,9 @@ private ArrayList<String> emphases;
 		return this.numApplicants;
 	}
 
+	public void setNumApplicants(int numApplicants){
+		this.numApplicants = numApplicants;
+	}
 
 
 	/**
@@ -129,6 +150,10 @@ private ArrayList<String> emphases;
 	 */
 	public int getAcademicScale() {
 		return this.academicScale;
+	}
+	
+	public void setAcademicScale(int academicScale){
+		this.academicScale = academicScale;
 	}
 
 
@@ -141,6 +166,10 @@ private ArrayList<String> emphases;
 	public int getSocialScale() {
 		return this.socialScale;
 	}
+	
+	public void setSocialScale(int socialScale){
+		this.socialScale = socialScale;
+	}
 
 
 
@@ -152,6 +181,11 @@ private ArrayList<String> emphases;
 	public int getqOLScale() {
 		return this.qOLScale;
 	}
+	
+	public void setqOLScale(int qOLScale){
+		this.qOLScale = qOLScale;
+	}
+
 
 
 
@@ -163,6 +197,11 @@ private ArrayList<String> emphases;
 	public double getEnrolled() {
 		return this.enrolled;
 	}
+	
+	public void setEnrolled(double enrolled){
+		this.enrolled = enrolled;
+	}
+
 
 
 
@@ -174,6 +213,11 @@ private ArrayList<String> emphases;
 	public double getSATV() {
 		return this.SATV;
 	}
+	
+	public void setSATV(double SATV){
+		this.SATV = SATV;
+	}
+
 
 
 
@@ -185,6 +229,11 @@ private ArrayList<String> emphases;
 	public double getSATM() {
 		return this.SATM;
 	}
+	
+	public void setSATM(double SATM){
+		this.SATM = SATM;
+	}
+
 
 	/**
 	 * gets the expenses of a university
@@ -193,6 +242,10 @@ private ArrayList<String> emphases;
 	 */
 	public double getExpenses() {
 		return this.expenses;
+	}
+	
+	public void setExpenses(double expenses){
+		this.expenses = expenses;
 	}
 
 	/**
@@ -204,6 +257,9 @@ private ArrayList<String> emphases;
 		return this.financialAid;
 	}
 
+	public void setFinancialAid(double financialAid){
+		this.financialAid = financialAid;
+	}
 	/**
 	 * gets the number of students admitted to a university
 	 *@param
@@ -211,6 +267,10 @@ private ArrayList<String> emphases;
 	 */
 	public double getAdmitted() {
 		return this.admitted;
+	}
+	
+	public void setAdmitted(double admitted){
+		this.admitted = admitted;
 	}
 
 
@@ -223,6 +283,12 @@ private ArrayList<String> emphases;
 	public double getFemales() {
 		return this.females;
 	}
+	
+	public void setFemales(double females){
+		this.females = females;
+	}
+	
+	
 	/**
 	 * gets the emphases of a university
 	 *@param
