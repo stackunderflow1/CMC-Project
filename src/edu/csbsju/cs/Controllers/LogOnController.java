@@ -21,11 +21,14 @@ public static String logOn(String username, String password)
 			if (password.equals(allU.get(i).getPassword())){
 				if(allU.get(i).getStatus().equals("Y")) {
 					if (allU.get(i).getType().equals("u")) {
-					result = "logged in as User";
+					result = "User";
 					}
 					else if (allU.get(i).getType().equals("a")) {
-						result = "logged in as Admin";
+						result = "Admin";
 					}
+				}
+				else if (allU.get(i).getStatus().equals("Y")) {
+					result = "deactivated";
 				}
 			}
 			

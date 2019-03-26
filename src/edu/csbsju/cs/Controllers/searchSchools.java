@@ -1,5 +1,5 @@
-package src.edu.csbsju.cs.Controllers;
-import src.edu.csbsju.cs.Entity.*;
+package edu.csbsju.cs.Controllers;
+import edu.csbsju.cs.Entity.*;
 import java.util.ArrayList;
 
 public class searchSchools {

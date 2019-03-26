@@ -281,7 +281,7 @@ private UniversityDBLibrary univDBlib;
 		String [][] allSavedSchools = dbld.getUnivDBlib().user_getUsernamesWithSavedSchools();
 		ArrayList<SavedSchools> savedSchools = new ArrayList<SavedSchools>();
 		
-		for (int i = 0; i < allSavedSchools.length; i++) {a University entity with the information of the university
+		for (int i = 0; i < allSavedSchools.length; i++) {//a University entity with the information of the university
 			if (allSavedSchools[i][0].equals(u.getUsername())) {
 				SavedSchools school = new SavedSchools(allSavedSchools[i][0], allSavedSchools[i][1], allSavedSchools[i][2]);
 				savedSchools.add(school);
