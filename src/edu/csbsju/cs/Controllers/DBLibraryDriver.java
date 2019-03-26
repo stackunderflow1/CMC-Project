@@ -1,4 +1,4 @@
-package edu.csbsju.cs.Controllers;
+package src.edu.csbsju.cs.Controllers;
 
 import dblibrary.project.csci230.*;
 import java.io.*;

@@ -1,4 +1,4 @@
-package edu.csbsju.cs.Entity;
+package src.edu.csbsju.cs.Entity;
 
 public class SavedSchools {
 	

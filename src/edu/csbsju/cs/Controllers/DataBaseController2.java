@@ -1,10 +1,11 @@
-package edu.csbsju.cs.Controllers;
+package src.edu.csbsju.cs.Controllers;
+
 
 import java.io.*;
 import dblibrary.project.csci230.UniversityDBLibrary;
-import edu.csbsju.cs.Entity.SavedSchools;
-import edu.csbsju.cs.Entity.University;
-import edu.csbsju.cs.Entity.Users;
+import src.edu.csbsju.cs.Entity.SavedSchools;
+import src.edu.csbsju.cs.Entity.University;
+import src.edu.csbsju.cs.Entity.Users;
 
 import java.util.*;
 

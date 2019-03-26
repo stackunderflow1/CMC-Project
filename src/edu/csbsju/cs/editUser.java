@@ -1,4 +1,4 @@
-package edu.csbsju.cs;
+package src.edu.csbsju.cs;
 
 import java.util.Scanner;
 

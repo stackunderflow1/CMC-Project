@@ -1,5 +1,5 @@
-package edu.csbsju.cs.Controllers;
-import edu.csbsju.cs.Entity.*;
+package src.edu.csbsju.cs.Controllers;
+import src.edu.csbsju.cs.Entity.*;
 import java.util.*;
 
 
@@ -10,11 +10,6 @@ import java.util.*;
  */
 public class TopRecommended {
 
-	/*private University university;
-	private int numSchools;
-	private static String name, state, location, control, e1, e2, e3, e4, e5;
-	private static int numStudents, numApplicants, academicScale, socialScale, qOLScale;
-	private static double enrolled, SATV, SATM, expenses, financialAid,  admitted, females;*/
 	private static ArrayList<University> schools = DataBaseController2.getAllSchoolDetails();;
 	/**
 	 * 
@@ -29,36 +24,7 @@ public class TopRecommended {
 				 u = schools.get(i);
 			}
 		}
-		/*name = u.getName();
-		name.toLowerCase();
-		state = u.getState();
-		state.toLowerCase();
-		location = u.getLocation();
-		location.toLowerCase();
-		control = u.getControl();
-		control.toLowerCase();
-		numStudents = u.getNumStudents();
-		females = u.getFemales();
-		SATV = u.getSATV();
-		SATM = u.getSATM();
-		expenses = u.getExpenses();
-		financialAid = u.getFinancialAid();
-		numApplicants = u.getNumApplicants();
-		admitted = u.getAdmitted();
-		enrolled = u.getEnrolled();
-		academicScale = u.getAcademicScale();
-		socialScale = u.getSocialScale();
-		qOLScale = u.getqOLScale();*/
-		/*e1 = sc.nextLine();
-		e1.toLowerCase();
-		e2 = sc.nextLine();
-		e2.toLowerCase();
-		e3 = sc.nextLine();
-		e3.toLowerCase();
-		e4 = sc.nextLine();
-		e4.toLowerCase();
-		e5 = sc.nextLine();
-		e5.toLowerCase();*/
+		
 		
 		double [] distances = new double[schools.size()];
 		String [] sc = new String[schools.size()];
