@@ -16,12 +16,12 @@ public class StudentFunctionalityController {
 	//creates a new user of type student
   Users stud1 = new Users(null, null, null, null, 'u', 'Y');
   //creates a new DB Library
-  UniversityDBLibrary univDBlib = new UniversityDBLibrary("stackund", "csci230");
+ // UniversityDBLibrary univDBlib = new UniversityDBLibrary("stackund", "csci230");
   //creates a new DB Controller
-  DataBaseController2 dbc = new DataBaseController2();
+ // DataBaseController2 dbc = new DataBaseController2();
   
   public static String logIn(String userName, String password) {
-	  String result =
+	//  String result =
   }
   
   
