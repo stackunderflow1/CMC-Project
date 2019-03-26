@@ -13,7 +13,7 @@ public class Users {
 	*instance variables
 	*/
 	public String firstName, lastName, userName, password, type, status;
-	
+	//Creates a User
 	public Users(String first, String last, String userNames, String passwords, String types, String statuss) {
 		this.firstName = first;
 		this.lastName = last;
@@ -23,6 +23,12 @@ public class Users {
 		this.status = statuss;
 			
 	}
+	//Logs in 
+	public Users(String userNames, String passwords) { 
+   		this.userName = usernames;
+   		this.password = passwords;
+	}
+	
 	/**
 	* gets the first name of the user
 	*@param
@@ -33,12 +39,29 @@ public class Users {
 	}
 	
 	/**
+	* sets the first name of the user
+	*@param
+	*/
+	public void setFirstname(String firstName){
+    		this.firstName = firstName;
+	}
+	
+	/**
 	* gets the last name of the user
 	*@param
 	*@returns the last name of the user/ this.lastName
 	*/
 	public String getLastName() {
 		return this.lastName;
+	}
+	
+	/**
+  	 * Sets the last name of user
+   	* 
+   	* @param lastName of user
+   	*/
+  	public void setLastname(String lastName){
+   		this.lastName = lastName;
 	}
 	
 	/**
@@ -59,6 +82,7 @@ public class Users {
 		return this.password;
 	}
 	
+	
 	/**
 	* gets the type of the user
 	*@param
@@ -69,11 +93,27 @@ public class Users {
 	}
 	
 	/**
+   	* Sets the type of the user
+   	* 
+  	* @param type the type of the account
+   	*/
+  	public void setType(String type) {
+    		this.type = type;
+	}
+	/**
 	* gets the status of the user
 	*@param
 	*@returns the status of the user/ this.status
 	*/
 	public String getStatus() {
 		return this.status;
+	}
+	/**
+  	 * Sets the status of the user
+   	* 
+  	 * @param status the status of the account
+  	 */
+ 	public void setStatus(String status){
+    		this.status = status;
 	}
 }
