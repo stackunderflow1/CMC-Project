@@ -1,10 +1,10 @@
 /**
  * 
  */
-package edu.csbsju.cs.Controllers;
+package src.edu.csbsju.cs.Controllers;
 import java.util.ArrayList;
 
-import edu.csbsju.cs.Entity.*;
+import src.edu.csbsju.cs.Entity.*;
 
 /**
  * @author aandrews002
@@ -61,9 +61,21 @@ public class AdminFunctionalityController {
 		
 	}
 	
+	public static Users getUser(String userName)
+	{
+		ArrayList<Users> stuList = DataBaseController2.getAllUsers();
+		for(int i = 0; i< stuList.size(); i++)
+		{
+			if(stuList.get(i).getUsername().equals(userName))
+			{
+				return stuList.get(i);
+			}
+		}
+	}
+	
 	public static int deleteSchool(University uni)
 	{
-		int x = DataBaseController2.deleteSchool(uni);
+		reutn DataBaseController2.deleteSchool(uni);
 		return x;
 	}
 	
