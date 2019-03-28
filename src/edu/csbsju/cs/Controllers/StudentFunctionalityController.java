@@ -1,9 +1,7 @@
 package edu.csbsju.cs.Controllers;
 import edu.csbsju.cs.Entity.*;
-import edu.csbsju.cs.Controllers.*;
 import java.util.ArrayList;
-import java.util.Scanner;
-import dblibrary.project.csci230.UniversityDBLibrary;
+
 
 /** 
  * StudentIntertactionController does the student interactions
@@ -20,8 +18,23 @@ public class StudentFunctionalityController {
   //creates a new DB Controller
  DataBaseController2 dbc = new DataBaseController2();
   
-  public static String logIn(String userName, String password) {
-	//  String result =
+  public String logIn(String userName, String password) {
+	String result = "You enetered the wrong username and/or password";
+	String info = LogOnController.logOn(userName, password);
+	if (info.equals("User")) {
+		result = "You logged in!";
+		ArrayList<Users> userList = DataBaseController2.getAllUsers();
+			for (int i = 0; i < userList.size(); i++) {
+				if (userName.equals(userList.get(i).getUsername())) {
+					this.stud1 = userList.get(i);
+				}
+			}
+	}
+	else if (info.equals("deactivated")) {
+		result = "Deactived account";
+	}
+	
+	return result;
   }
   
   
