@@ -38,8 +38,21 @@ public static String logOn(String username, String password)
 	return result;
 }
 
-public  void logout()
+public  void logout(String username, String password)
 {
-
-}
+	allU = DataBaseController2.getAllUsers();
+	String result = "fail";
+	for (int i = 0; i < allU.size(); i++){
+		if (username.equals(allU.get(i).getUsername())) {
+			if (password.equals(allU.get(i).getPassword())){
+				if(allU.get(i).getStatus().equals("Y")) {
+					if (allU.get(i).getType().equals("u")) || (allU.get(i).getType().equals("a")){
+						result = "Successfully logged out";
+				}
+			}
+			
+		}
+	
+	}
+	return result;
 }
