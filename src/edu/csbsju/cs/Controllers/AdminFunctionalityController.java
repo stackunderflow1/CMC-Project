@@ -1,10 +1,10 @@
 /**
  * 
  */
-package src.edu.csbsju.cs.Controllers;
+package edu.csbsju.cs.Controllers;
 import java.util.ArrayList;
 
-import src.edu.csbsju.cs.Entity.*;
+import edu.csbsju.cs.Entity.*;
 
 /**
  * @author aandrews002
@@ -19,10 +19,10 @@ public class AdminFunctionalityController {
 		// TODO Auto-generated constructor stub
 	}
 
-	public static int addUser(String firstName, String lastName, String userName, String password, String type)
+	public static int addUser(Users newUser)
 	{
 		
-	Users newUser = new Users(firstName, lastName, userName, password, type, "Y");
+	
 	int x = DataBaseController2.addUser(newUser);
 	return x;
 	}
@@ -41,15 +41,8 @@ public class AdminFunctionalityController {
 	return x;
 	}
 	
-	public static int addUniversity(String name, String state, String location, String control, int numStudents, 
-			 double females, double SATV, double SATM, double expenses, double financialAid, 
-			 int numApplicants, double admitted, double enrolled, int academicScale, int socialScale, 
-			 int qOLScale, ArrayList<String> emphasess)
+	public static int addUniversity(University uni)
 	{
-		University uni = new University( name,  state, location,  control,  numStudents, 
-				  females,  SATV,  SATM,  expenses,  financialAid, 
-				  numApplicants,  admitted, enrolled, academicScale, socialScale, 
-				  qOLScale, emphasess);
 		int x = DataBaseController2.addUniversity(uni);
 		return x;
 	}
@@ -64,18 +57,20 @@ public class AdminFunctionalityController {
 	public static Users getUser(String userName)
 	{
 		ArrayList<Users> stuList = DataBaseController2.getAllUsers();
+		Users user = new Users("", "", "", "", "", "");
 		for(int i = 0; i< stuList.size(); i++)
 		{
 			if(stuList.get(i).getUsername().equals(userName))
 			{
-				return stuList.get(i);
+				user = stuList.get(i);
 			}
 		}
+		return user;
 	}
 	
 	public static int deleteSchool(University uni)
 	{
-		reutn DataBaseController2.deleteSchool(uni);
+		int x = DataBaseController2.deleteSchool(uni);
 		return x;
 	}
 	

@@ -4,6 +4,8 @@
 package edu.csbsju.cs.Interface;
 
 import java.util.ArrayList;
+import edu.csbsju.cs.Entity.*;
+import edu.csbsju.cs.Controllers.*;
 
 /**
  * @author aandrews002
@@ -18,9 +20,9 @@ public class AdminInteraction {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static int addUser(String firstName, String lastName, String userName, String password, String type)
+	public static int addUser(String firstName, String lastName, String userName, String password, String type, String status)
 	{
-		Users newUser = new Users(firstName, lastName, userName, password, type);
+		Users newUser = new Users(firstName, lastName, userName, password, type, status);
 	return AdminFunctionalityController.addUser(newUser);
 	}
 	
@@ -48,7 +50,7 @@ public class AdminInteraction {
 		return AdminFunctionalityController.addUniversity(uni);
 	}
 	
-	public static void getAllUsers()
+	public static ArrayList<Users> getAllUsers()
 	{
 		return AdminFunctionalityController.getAllUsers();
 		
