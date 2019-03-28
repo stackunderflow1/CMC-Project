@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-package src.edu.csbsju.cs.Controllers;
-
-
-import java.io.*;
-import dblibrary.project.csci230.UniversityDBLibrary;
-import src.edu.csbsju.cs.Entity.SavedSchools;
-import src.edu.csbsju.cs.Entity.University;
-import src.edu.csbsju.cs.Entity.Users;
-
-=======
 /* packages
 */
 package edu.csbsju.cs.Controllers;
@@ -19,7 +8,7 @@ import dblibrary.project.csci230.UniversityDBLibrary;
 import edu.csbsju.cs.Entity.SavedSchools;
 import edu.csbsju.cs.Entity.University;
 import edu.csbsju.cs.Entity.Users;
->>>>>>> 2d8d3b1db98685ea8a89f636ad93846d95b99ae5
+
 import java.util.*;
 /**
  * This class is the Database controller that allows a user to access the database.

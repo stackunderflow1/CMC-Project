@@ -1,10 +1,10 @@
 /**
  * 
  */
-package src.edu.csbsju.cs.Controllers;
+package edu.csbsju.cs.Controllers;
 import java.util.ArrayList;
 
-import src.edu.csbsju.cs.Entity.*;
+import edu.csbsju.cs.Entity.*;
 
 /**
  * @author aandrews002

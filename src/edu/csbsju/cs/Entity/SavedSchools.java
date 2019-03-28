@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-package src.edu.csbsju.cs.Entity;
 
-=======
+
+
 /**
 *packages
 */
@@ -11,7 +10,7 @@ package edu.csbsju.cs.Entity;
 *@author DeAndre Bethell, Ryan Graham, Noah Lefebvre, Anton Andrews, Nathan Drees
 *@version March 2019
 */
->>>>>>> 2d8d3b1db98685ea8a89f636ad93846d95b99ae5
+
 public class SavedSchools {
 	/**
 	*instance variables

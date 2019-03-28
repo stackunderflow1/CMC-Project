@@ -1,7 +1,5 @@
-<<<<<<< HEAD
-package src.edu.csbsju.cs.Entity;
 
-=======
+
 /**
 *packages
 */
@@ -9,7 +7,7 @@ package edu.csbsju.cs.Entity;
 /**
 *imports
 */
->>>>>>> 2d8d3b1db98685ea8a89f636ad93846d95b99ae5
+
 import java.util.*;
 /**
  *stackUnderflow1
@@ -76,7 +74,7 @@ private ArrayList<String> emphases;
 	}
 	
 	public void setName(String name){
-		this.name = name.toUpperCase;
+		this.name = name.toUpperCase();
 	}
 	/**
 	 * gets the state of the University
@@ -88,7 +86,7 @@ private ArrayList<String> emphases;
 	}
 	
 	public void setState(String state){
-		this.schoolName = state.toUpperCase;
+		this.state = state.toUpperCase();
 	}
 
 	/**
@@ -101,7 +99,7 @@ private ArrayList<String> emphases;
 	}
 
 	public void setLocation(String location){
-		this.location = location.toUpperCase;
+		this.location = location.toUpperCase();
 	}
 
 
@@ -115,7 +113,7 @@ private ArrayList<String> emphases;
 	}
 
 	public void setControl(String control){
-		this.control = control.toUpperCase;
+		this.control = control.toUpperCase();
 	}
 
 

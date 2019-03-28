@@ -14,11 +14,11 @@ import dblibrary.project.csci230.UniversityDBLibrary;
 
 public class StudentFunctionalityController {
 	//creates a new user of type student
-  Users stud1 = new Users(null, null, null, null, 'u', 'Y');
+  Users stud1;
   //creates a new DB Library
  // UniversityDBLibrary univDBlib = new UniversityDBLibrary("stackund", "csci230");
   //creates a new DB Controller
- // DataBaseController2 dbc = new DataBaseController2();
+ DataBaseController2 dbc = new DataBaseController2();
   
   public static String logIn(String userName, String password) {
 	//  String result =
@@ -37,7 +37,7 @@ public class StudentFunctionalityController {
   {
       
       
-      if (dbc.editUser(stud1) = -1)
+      if (dbc.editUser(stud1) == -1)
       {
         System.out.println("The changes have been made.");
       	return -1;
@@ -73,7 +73,8 @@ public class StudentFunctionalityController {
 
   public int saveSchool(String uName,String school)
   {
-    dbc.saveSchool(uName,school); 
+   int resuslt =  dbc.saveSchool(uName,school); 
+   return resuslt;
   }
       
   /**
@@ -85,4 +86,5 @@ public class StudentFunctionalityController {
    */
   public int removeUniversity(SavedSchools school){
 	return removeUniversity(school);
+}
 }

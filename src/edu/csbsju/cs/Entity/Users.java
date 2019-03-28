@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-package src.edu.csbsju.cs.Entity;
 
-=======
+
+
 /**
 *packages
 */
@@ -12,7 +11,7 @@ package edu.csbsju.cs.Entity;
  * @author DeAndre Bethell, Nathan Drees, Ryan Graham, Noah Lefebvre, Anton Andrews
  * @version March 2019
  */
->>>>>>> 2d8d3b1db98685ea8a89f636ad93846d95b99ae5
+
 public class Users {
 	/**
 	*instance variables
@@ -30,7 +29,7 @@ public class Users {
 	}
 	//Logs in 
 	public Users(String userNames, String passwords) { 
-   		this.userName = usernames;
+   		this.userName = userNames;
    		this.password = passwords;
 	}
 	
@@ -113,7 +112,7 @@ public class Users {
 	public String getStatus() {
 		return this.status;
 	}
-<<<<<<< HEAD
+
 	
 	public String setStatus(String status)
 	{
@@ -153,23 +152,14 @@ public class Users {
 	 */
 	public void setPassword(String password) {
 		this.password = password;
-	}
+	}	
 
-	/**
-	 * @param type the type to set
-	 */
-	public void setType(String type) {
-		this.type = type;
-	}
-	
-=======
 	/**
   	 * Sets the status of the user
    	* 
   	 * @param status the status of the account
   	 */
- 	public void setStatus(String status){
+ 	public void setStatus1(String status){
     		this.status = status;
 	}
->>>>>>> 2d8d3b1db98685ea8a89f636ad93846d95b99ae5
 }
