@@ -1,14 +1,18 @@
+/*packages
+*/
 package edu.csbsju.cs.Controllers;
+/* imports
+*/
 import edu.csbsju.cs.Entity.*;
 import java.util.ArrayList;
 
-
-/** 
- * StudentIntertactionController does the student interactions
- * 
- * @author StackUnderflow
- * @version March 20, 2019
+/**
+ * This class is the StudentInteractioncontroller that allows a student to interact with the database.
+ * @StackUnderflow
+ * @author DeAndre Bethell, Nathan Drees, Anton Andrews, Ryan Graham, Noah Lefebvre
+ * @version March 2019
  */
+
 
 public class StudentFunctionalityController {
 	//creates a new user of type student
@@ -18,6 +22,11 @@ public class StudentFunctionalityController {
   //creates a new DB Controller
  DataBaseController2 dbc = new DataBaseController2();
   
+/** 
+ *Allows the user to log into the database
+*@param String userName, password
+*@returns a successful result if you have successfully logged in; Wrong username/password or deactivated account if log in was not successful
+*/
   public String logIn(String userName, String password) {
 	String result = "You enetered the wrong username and/or password";
 	String info = LogOnController.logOn(userName, password);
@@ -45,7 +54,7 @@ public class StudentFunctionalityController {
    * @param l the last name of the student
    * @param p the password of the student
    */
-  
+ 
   public int editUser(Users u) 
   {
       
