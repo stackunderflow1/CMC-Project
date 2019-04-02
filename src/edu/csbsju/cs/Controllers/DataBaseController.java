@@ -16,7 +16,7 @@ import java.util.*;
  * @author DeAndre Bethell, Nathan Drees, Anton Andrews, Ryan Graham, Noah Lefebvre
  * @version March 2019
  */
-public class DataBaseController2 {
+public class DataBaseController {
 /** private instance variables
 */
 private UniversityDBLibrary univDBlib;
@@ -25,8 +25,9 @@ private UniversityDBLibrary univDBlib;
 	/** @param String username, String password
 	*@return 
 	*/
-	public void DBLibraryDriver(String username, String password){
-		univDBlib = new UniversityDBLibrary(username,password);
+	public DataBaseController()
+	{
+		univDBlib = new UniversityDBLibrary("stackund","csci230");
 	}
   	/*@param
 	*@returns UniversityDBLibrary univDBlib
@@ -65,10 +66,10 @@ private UniversityDBLibrary univDBlib;
    	* 
    	* @return newSchoolList /an entity with the information of the university
  	*/
-	public static ArrayList<University> getAllSchoolDetails() {
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
-		String [][] allSchools = dbld.getUnivDBlib().university_getUniversities();
-		String [][] schoolEmp = dbld.getUnivDBlib().university_getNamesWithEmphases();
+	public ArrayList<University> getAllSchoolDetails() {
+		
+		String [][] allSchools = univDBlib.university_getUniversities();
+		String [][] schoolEmp = univDBlib.university_getNamesWithEmphases();
 		ArrayList<University> newSchoolList = new ArrayList<University>();
 		
 		int i = 0;
@@ -107,16 +108,15 @@ private UniversityDBLibrary univDBlib;
    	* 
    	* @return newUserList / an entity with the information on the users
  	*/
-	public static ArrayList<Users> getAllUsers() {
+	public ArrayList<Users> getAllUsers() {
 	
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
-		String[][] allUsers = dbld.getUnivDBlib().user_getUsers();
+		String[][] allUsers = univDBlib.user_getUsers();
 		ArrayList<Users> newUserList = new ArrayList<Users>();
 	
 		int i = 0;
 		while (i<allUsers.length) {
 			Users user = new Users(allUsers[i][0], allUsers[i][1], allUsers[i][2], 
-					allUsers[i][3], allUsers[i][4], allUsers[i][5]);
+					allUsers[i][3], allUsers[i][4].charAt(0), allUsers[i][5].charAt(0));
 		
 			newUserList.add(user);
 			i++;
@@ -129,46 +129,63 @@ private UniversityDBLibrary univDBlib;
 	*@returns schoolAdded
 	*
 	*/
-	public static int addUniversity(University uni) {
-		int schoolAdded = 0;
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
-	
-		int addU = dbld.getUnivDBlib().university_addUniversity(uni.getName(), uni.getState(), uni.getLocation(),
-				uni.getControl(), uni.getNumStudents(), uni.getFemales(), uni.getSATV(), uni.getSATM(), uni.getExpenses(),
-				uni.getFinancialAid(), uni.getNumApplicants(), uni.getAdmitted(), uni.getEnrolled(), uni.getAcademicScale(),
-				uni.getSocialScale(), uni.getqOLScale());
-	
-		ArrayList<String> uniE = uni.getEmphases();
-		int i = 0;
-		while (i < uniE.size()) {
-			int addE = dbld.getUnivDBlib().university_addUniversityEmphasis(uni.getName(), uniE.get(i));
-				if (addE == -1) {
-				schoolAdded = addE;
-			}
-			i++;
+	public boolean addUniversity(University uni) {
+		boolean isThere = false;
+		if(!this.checkSchoolName(uni.getName())) {
+			isThere = true;
+			univDBlib.university_addUniversity(uni.getName(), uni.getState(), uni.getLocation(),
+					uni.getControl(), uni.getNumStudents(), uni.getFemales(), uni.getSATV(), uni.getSATM(), uni.getExpenses(),
+					uni.getFinancialAid(), uni.getNumApplicants(), uni.getAdmitted(), uni.getEnrolled(), uni.getAcademicScale(),
+					uni.getSocialScale(), uni.getqOLScale());
+		
+			ArrayList<String> emp = uni.getEmphases();
+			int i = 0;
+			while (i < emp.size()) {
+				univDBlib.university_addUniversityEmphasis(uni.getName(), emp.get(i));
+				}
 		}
-		if (addU == -1) {
-			schoolAdded = addU;
+		else {
+			isThere = false;
 		}
-
-		return schoolAdded;
+		
+		return isThere;
 	}
+			
+	public boolean checkSchoolName(String name) {
+		boolean there = false;
+		ArrayList<University> checkSchool = this.getAllSchoolDetails();
+		for(University u : checkSchool) {
+			if(u.getName().equals(name)) {
+				there = true;
+			}
+		}
+		return there;
+	}
+			
+	
+	public boolean checkUserName(String name) {
+		boolean there = false;
+		ArrayList<Users> checkUsers = this.getAllUsers();
+		for(Users u : checkUsers) {
+			if(u.getUsername().equals(name)) {
+				there = true;
+			}
+		}
+		return there;
+	}
+			
+			
 	/**
 	* Allows the users to add a user to the database
 	*@param Users use/ user to be added in the database
 	*@returns addSuccess
 	*
 	*/
-	public static int addUser(Users use) {
-		int addSuccess = 0;
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
-		char type = use.getType().charAt(0);
-		int addU = dbld.getUnivDBlib().user_addUser(use.getFirstName(), use.getLastName(), use.getUsername(),
-				use.getPassword(), type);
-		if (addU == -1) {
-			addSuccess = addU;
-		}
-		return addSuccess;
+	public boolean addUser(Users use) {
+		
+		univDBlib.user_addUser(use.getFirstName(), use.getLastName(), use.getUsername(),
+				use.getPassword(), use.getType());
+	
 	}
 	/**
 	* Allows the users to delete a university from the database
@@ -176,15 +193,14 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public static int deleteSchool(University uni) {
+	public int deleteSchool(University uni) {
 		int success = 0;
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
-		int delete = dbld.getUnivDBlib().university_deleteUniversity(uni.getName());
+		int delete = univDBlib.university_deleteUniversity(uni.getName());
 		
 		ArrayList<String> uniE = uni.getEmphases();
 		int i = 0;
 		while (i < uniE.size()) {
-			int deleteE = dbld.getUnivDBlib().university_removeUniversityEmphasis(uni.getName(), uniE.get(i));
+			int deleteE = univDBlib.university_removeUniversityEmphasis(uni.getName(), uniE.get(i));
 				if (deleteE == -1) {
 				success = deleteE;
 			}
@@ -201,40 +217,13 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public static int editSchool(University uniO, University uni) {
-		int success = 0;
-		
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
-	
-		int editU = dbld.getUnivDBlib().university_editUniversity(uni.getName(), uni.getState(), uni.getLocation(),
+	public void editSchool(University uni) {
+		univDBlib.university_editUniversity(uni.getName(), uni.getState(), uni.getLocation(),
 				uni.getControl(), uni.getNumStudents(), uni.getFemales(), uni.getSATV(), uni.getSATM(), uni.getExpenses(),
 				uni.getFinancialAid(), uni.getNumApplicants(), uni.getAdmitted(), uni.getEnrolled(), uni.getAcademicScale(),
 				uni.getSocialScale(), uni.getqOLScale());
+		
 
-		if (editU == -1) {
-			success = editU;
-		}
-		ArrayList<String> uniE = uniO.getEmphases();
-		int i = 0;
-		while (i < uniE.size()) {
-			int deleteE = dbld.getUnivDBlib().university_removeUniversityEmphasis(uni.getName(), uniE.get(i));
-				if (deleteE == -1) {
-				success = deleteE;
-			}
-			i++;
-		}
-		
-		ArrayList<String> uniR = uni.getEmphases();
-		int a = 0;
-		while (a < uniR.size()) {
-			int addE = dbld.getUnivDBlib().university_addUniversityEmphasis(uni.getName(), uniE.get(a));
-				if (addE == -1) {
-				success = addE;
-			}
-			a++;
-		}
-		
-		return success;
 	}
 	/**
 	* Allows the users to delete a user from the database
@@ -242,15 +231,9 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public static int deleteUser(Users u) {
-		int success = 0;
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
-		int deleteU = dbld.getUnivDBlib().user_deleteUser(u.getUsername());
-		if (deleteU == -1) {
-			success = deleteU;
-		}
+	public void deleteUser(Users u) {
+		univDBlib.user_deleteUser(u.getUsername());
 		
-		return success;
 	}
 	/**
 	* Allows the users to edit a user in the database
@@ -258,18 +241,12 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public static int editUser(Users u) {
-		int success = 0;
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
-		char type = u.getType().charAt(0);
-		char status = u.getStatus().charAt(0);
-		int deleteU = dbld.getUnivDBlib().user_editUser(u.getUsername(), u.getFirstName(), u.getLastName(),
-				u.getPassword(), type, status);
-		if (deleteU == -1) {
-			success = deleteU;
-		}
+	public void editUser(Users u) {
 		
-		return success;
+		
+		univDBlib.user_editUser(u.getUsername(), u.getFirstName(), u.getLastName(),
+				u.getPassword(), u.getType(), u.getStatus());
+		
 	}
 	/**
 	* Allows the users to get saved schools in the database
@@ -277,9 +254,8 @@ private UniversityDBLibrary univDBlib;
 	*@returns savedSchools
 	*
 	*/
-	public static ArrayList<SavedSchools> getSavedSchools(Users u){
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");
-		String [][] allSavedSchools = dbld.getUnivDBlib().user_getUsernamesWithSavedSchools();
+	public ArrayList<SavedSchools> getSavedSchools(Users u){
+		String [][] allSavedSchools = univDBlib.user_getUsernamesWithSavedSchools();
 		ArrayList<SavedSchools> savedSchools = new ArrayList<SavedSchools>();
 		
 		for (int i = 0; i < allSavedSchools.length; i++) {//a University entity with the information of the university
@@ -296,10 +272,9 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public static int removeSavedSchool(SavedSchools school) {
+	public int removeSavedSchool(SavedSchools school) {
 		int success = 0;
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");	
-		int remove = dbld.getUnivDBlib().user_removeSchool(school.getUsername(), school.getSchool());
+		int remove = univDBlib.user_removeSchool(school.getUsername(), school.getSchool());
 		if (remove == -1) {
 			success = remove;
 		}
@@ -311,10 +286,9 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public static int saveSchool(String uName, String school) {
+	public int saveSchool(String uName, String school) {
 		int success = 0;
-		DBLibraryDriver dbld = new DBLibraryDriver("stackund", "csci230");	
-		int add = dbld.getUnivDBlib().user_saveSchool(uName, school);
+		int add = univDBlib.user_saveSchool(uName, school);
 		if (add == -1) {
 			success = add;
 		}

@@ -16,6 +16,7 @@ import edu.csbsju.cs.Entity.*;
  */
 public class AdminFunctionalityController {
 
+	private DataBaseController dbc = new DataBaseController();
 	/**
 	 * Constructor 
 	 */
@@ -28,11 +29,11 @@ public class AdminFunctionalityController {
 	*@param String firstname, lastName, userName, password, type
 	*@return the new user in the database; x
 	*/
-	public static int addUser(Users newUser)
+	public int addUser(Users newUser)
 	{
 		
 	
-	int x = DataBaseController2.addUser(newUser);
+	int x = dbc.addUser(newUser);
 	return x;
 	}
 	/*
@@ -40,10 +41,10 @@ public class AdminFunctionalityController {
 	*@param User users
 	*@return the user that was deleted from the database; x
 	*/
-	public static int deleteUser(Users user)
+	public int deleteUser(Users user)
 	{
 	
-	int x = DataBaseController2.deleteUser(user);
+	int x = dbc.deleteUser(user);
 	return x;
 	}
 	/*
@@ -51,10 +52,10 @@ public class AdminFunctionalityController {
 	*@param Users user
 	*@return the updated user in the database; x
 	*/
-	public static int editUser(Users user)
+	public int editUser(Users user)
 	{
 	
-	int x = DataBaseController2.editUser(user);
+	int x = dbc.editUser(user);
 	return x;
 	}
 
@@ -67,9 +68,9 @@ public class AdminFunctionalityController {
 	*
 	*@return the new university in the database; x
 	*/
-	public static int addUniversity(University uni)
+	public int addUniversity(University uni)
 	{
-		int x = DataBaseController2.addUniversity(uni);
+		int x = dbc.addUniversity(uni);
 		return x;
 	}
 	/*
@@ -77,9 +78,9 @@ public class AdminFunctionalityController {
 	*@param 
 	*@return all the users in the database
 	*/
-	public static ArrayList<Users> getAllUsers()
+	public ArrayList<Users> getAllUsers()
 	{
-		ArrayList<Users> stuList = DataBaseController2.getAllUsers();
+		ArrayList<Users> stuList = dbc.getAllUsers();
 		return stuList;
 		
 	}
@@ -88,9 +89,9 @@ public class AdminFunctionalityController {
 	*@param String userName 
 	*@return a user in the database
 	*/
-	public static Users getUser(String userName)
+	public Users getUser(String userName)
 	{
-		ArrayList<Users> stuList = DataBaseController2.getAllUsers();
+		ArrayList<Users> stuList = dbc.getAllUsers();
 		Users user = new Users("", "", "", "", "", "");
 		for(int i = 0; i< stuList.size(); i++)
 		{
@@ -106,9 +107,9 @@ public class AdminFunctionalityController {
 	*@param University uni
 	*@return the  university deleted from the database; x
 	*/
-	public static int deleteSchool(University uni)
+	public int deleteSchool(University uni)
 	{
-		int x = DataBaseController2.deleteSchool(uni);
+		int x = dbc.deleteSchool(uni);
 
 		return x;
 	}
@@ -117,9 +118,9 @@ public class AdminFunctionalityController {
 	*@param University uni0, uni1
 	*@return the  university edited in the database; x
 	*/
-	public static int editSchool(University uni0, University uni1)
+	public int editSchool(University uni0, University uni1)
 	{
-		int x = DataBaseController2.editSchool(uni0, uni1);
+		int x = dbc.editSchool(uni0, uni1);
 		return x;
 	}
 	/*
@@ -127,7 +128,7 @@ public class AdminFunctionalityController {
 	*@param Users user
 	*@return the  university deactivated in the database; x
 	*/
-	public static int deactivateUser(Users user)
+	public int deactivateUser(Users user)
 	{
 		if(user.getStatus().equals("Y"))
 		{
@@ -137,7 +138,7 @@ public class AdminFunctionalityController {
 		{
 			user.setStatus("Y");
 		}
-		int x = DataBaseController2.editUser(user);
+		int x = dbc.editUser(user);
 		return x;
 	}
 	/*
@@ -145,7 +146,7 @@ public class AdminFunctionalityController {
 	*@param Users user 
 	*@return a user in the database
 	*/
-	public static String getUser(Users user)
+	public String getUser(Users user)
 	{
 		String s = user.print();
 		return s;
