@@ -20,16 +20,17 @@ public class StudentUserInteraction {
 	*@param 
 	*@returns the a university in the database
 	*/
+	private StudentFunctionalityController sfc = new StudentFunctionalityController();
   public University viewUniversity(University uni)
   {
-    return StudentFunctionalityController.getSchools(uni);
+    return StudentFunctionalityController.getSchoolDetails(uni);
   }
   /**
 	* Displays all the saved schools that the user saved in the database
 	*@param 
 	*@returns the saved schools in the database
 	*/
-  public Page viewAllSavedUniversitys(Users u) 
+  public ArrayList<SavedSchools> viewAllSavedUniversitys(Users u) 
   { 
     return StudentFunctionalityController.getSavedSchools(u);
   }
@@ -49,16 +50,16 @@ public class StudentUserInteraction {
 	*/
   public Page viewRecommendedUniversitys(String n) 
   {
-    return UniversityController.topRecommended(n)
+    UniversityController.topRecommended(n);
   }
   /**
 	* Saves a university to the database
 	*@param String uName, school
 	*@returns the saved university in the database
 	*/
-  public void saveUniversity(String uName, school) 
+  public void saveUniversity(String uName, String school) 
   { 
-    return StudentFunctionalityController.saveSchool(uName,school);
+    sfc.saveSchool(uName,school);
   }
   /**
 	* Searches for a university in the database
@@ -67,16 +68,16 @@ public class StudentUserInteraction {
 	*/
   public void searchUniversity(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale)
   { 
-    return UniversityController.searchAllSchools(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale)
+    UniversityController.searchAllSchools(name, state, location, control, numStudents, females,  SATV, SATM, expenses, financialAid, numApplicants, admitted, enrolled, academicScale, socialScale, qOLScale);
   }
   /**
 	*Deletes a saved school from the database
 	*@param University school
 	*@returns University list without the school that was deleted
 	*/
-  public void removeSavedUniversity(SavedSchools school)
+  public int removeSavedUniversity(SavedSchools school)
   {
-    return StudentFunctionalityController.removeUniversity(school);
+    return sfc.removeUniversity(school);
   }
   
  
