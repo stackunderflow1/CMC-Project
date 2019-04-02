@@ -20,7 +20,7 @@ public class StudentUserInteraction {
 	*@param 
 	*@returns the a university in the database
 	*/
-  public University viewUniversity()
+  public University viewUniversity(University uni)
   {
     return StudentFunctionalityController.getSchools(uni);
   }
@@ -29,7 +29,7 @@ public class StudentUserInteraction {
 	*@param 
 	*@returns the saved schools in the database
 	*/
-  public Page viewAllSavedUniversitys() 
+  public Page viewAllSavedUniversitys(Users u) 
   { 
     return StudentFunctionalityController.getSavedSchools(u);
   }
@@ -47,9 +47,9 @@ public class StudentUserInteraction {
 	*@param 
 	*@returns the recommended universities to the user
 	*/
-  public Page viewRecommendedUniversitys() 
+  public Page viewRecommendedUniversitys(String n) 
   {
-    return 
+    return UniversityController.topRecommended(n)
   }
   /**
 	* Saves a university to the database
@@ -65,16 +65,16 @@ public class StudentUserInteraction {
 	*@param 
 	*@returns the university the user searched for in the database
 	*/
-  public void searchUniversity() 
+  public void searchUniversity(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale)
   { 
-    return 
+    return UniversityController.searchAllSchools(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale)
   }
   /**
 	*Deletes a saved school from the database
 	*@param University school
 	*@returns University list without the school that was deleted
 	*/
-  public void removeSavedUniversity()
+  public void removeSavedUniversity(SavedSchools school)
   {
     return StudentFunctionalityController.removeUniversity(school);
   }
