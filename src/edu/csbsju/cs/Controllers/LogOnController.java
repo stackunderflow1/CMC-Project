@@ -58,12 +58,13 @@ public static String logOn(String username, String password)
 	}
 	return result;
 }
+
 /** 
 * Allows the user to logout of the database
 *@param String username, password
 @returns successfully logged out or fail if the user fails to log out
 */
-public  void logout(String username, String password)
+public String logout(String username, String password)
 {
 	allU = DataBaseController2.getAllUsers();
 	String result = "fail";
@@ -71,13 +72,23 @@ public  void logout(String username, String password)
 		if (username.equals(allU.get(i).getUsername())) {
 			if (password.equals(allU.get(i).getPassword())){
 				if(allU.get(i).getStatus().equals("Y")) {
-					if (allU.get(i).getType().equals("u")) || (allU.get(i).getType().equals("a")){
-						result = "Successfully logged out";
+					if (allU.get(i).getType().equals("u")){
+						result = "Successfully logged out as user";
 				}
+					else if( (allU.get(i).getType().equals("a")))
+					{
+						result = "Sucessfully logged out as admin";
+					}
+					else
+					{
+						result = "fail";
+					}
 			}
 			
 		}
 	
 	}
+}
 	return result;
+}
 }
