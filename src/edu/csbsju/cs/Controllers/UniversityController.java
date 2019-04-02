@@ -19,6 +19,7 @@ public class UniversityController {
 	/**
 	 * Constructor
 	 */
+	//University university;
 	public UniversityController() {
 		// TODO Auto-generated constructor stub
 		
@@ -262,4 +263,49 @@ public class UniversityController {
 		System.out.println("Top Recommended: \n" + a2[1] + "\n" + a2[2] + "\n" +a2[3] + "\n" + a2[4] + "\n" + a2[5]);
 		System.out.println("\n\nwith distances of: \n" + a2[1] + ": " + a1[1] + "\n" + a2[2] + ": " + a1[2] + "\n" +a2[3] + ": " +a1[3] + "\n" + a2[4] + ": " + a1[4] + "\n" + a2[5] + ": " + a1[5]);
 	}
+	
+	//@param double SATV, double SATM
+	public double acceptanceProbability(double SATV, double SATM, University university)
+	  {
+		double hello = university.getSATV() - SATV;
+		double world = university.getSATM() - SATM;
+		  
+		if((university.getSATV() == -1.0)|| (university.getSATM()==-1.0))
+		{
+			return -1;
+		}
+		if (SATV > 800 || SATV < 0 || SATM > 800 || SATV < 0)
+		{
+			return -1;
+		}
+		else if (hello <= 0 && world <= 0) {
+			  return 100.0;
+		  }
+		  else if(hello < 20 && world < 20 )
+		  {
+			  return 90.0;
+		  }
+		  else if(hello < 50 && world < 50)
+		  {
+			  return 70.0;
+		  }
+		  else if(hello < 75 && world < 75)
+		  {
+			  return 55.0;
+		  }
+		  else if(hello < 100 && world < 100)
+		  {
+			  return 40.0;
+		  }
+		  else if(hello < 150 && world < 150)
+		  {
+			  return 10.0;
+		  }
+		  else if(SATV == 800 || SATM == 800)
+		  {
+			  return 100;
+		  }
+		
+	  return 0.0;
+	  }
 }

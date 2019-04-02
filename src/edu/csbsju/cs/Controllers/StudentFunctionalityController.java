@@ -109,4 +109,12 @@ public class StudentFunctionalityController {
   public int removeUniversity(SavedSchools school){
 	return removeUniversity(school);
 }
-}
+/*  public double acceptanceProbability(double SATV, double SATM, University university)
+  {
+	  
+	  University 
+	  
+  return 0.0;*/
+  }
+  
+
