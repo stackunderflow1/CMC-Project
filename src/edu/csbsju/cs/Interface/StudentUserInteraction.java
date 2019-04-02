@@ -1,10 +1,10 @@
 /*packages
 */
-package edu.csbsju.cs.Interaction;
+package edu.csbsju.cs.Interface;
 /*imports
 */
-import controller.*;
-import entity.*;
+import edu.csbsju.cs.Controllers.*;
+import edu.csbsju.cs.Entity.*;
 import java.util.*;
 
 /**

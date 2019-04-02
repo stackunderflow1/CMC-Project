@@ -22,17 +22,16 @@ public class AdminInteraction {
 	public AdminInteraction() {
 		// TODO Auto-generated constructor stub
 	}
-<<<<<<< HEAD
 	
-	public static int addUser(String firstName, String lastName, String userName, String password, String type, String status)
-=======
+	
+
 	/**
 	* Adds a new user to the database
 	*@param String, firstName, lastName, userName, password, type
 	*@returns the new user that was added to the database
 	*/
-	public static int addUser(String firstName, String lastName, String userName, String password, String type)
->>>>>>> d2d92422d0415c5f2a9034da3b27186350d03a49
+	public static int addUser(String firstName, String lastName, String userName, String password, String type, String status)
+
 	{
 		Users newUser = new Users(firstName, lastName, userName, password, type, status);
 	return AdminFunctionalityController.addUser(newUser);
@@ -76,17 +75,14 @@ public class AdminInteraction {
 				  qOLScale, emphasess);
 		return AdminFunctionalityController.addUniversity(uni);
 	}
-<<<<<<< HEAD
-	
-	public static ArrayList<Users> getAllUsers()
-=======
+
 	/**
 	* gets all the users in the database
 	*@param
 	*@returns all the users in the database
 	*/
 	public static void getAllUsers()
->>>>>>> d2d92422d0415c5f2a9034da3b27186350d03a49
+
 	{
 		return AdminFunctionalityController.getAllUsers();
 		
