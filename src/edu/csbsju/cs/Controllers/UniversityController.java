@@ -1,26 +1,35 @@
 /**
- * 
+ * packages
  */
 package edu.csbsju.cs.Controllers;
-
+/**
+ * imports
+ */
 import java.util.ArrayList;
-
 import edu.csbsju.cs.Entity.University;
 
 /**
- * @author aandrews002
- *
+ * This class is the University controller that allows a user to access the database.
+ * @StackUnderflow
+ * @author DeAndre Bethell, Nathan Drees, Anton Andrews, Ryan Graham, Noah Lefebvre
+ * @version March 2019
  */
 public class UniversityController {
 
 	/**
-	 * 
+	 * Constructor
 	 */
 	public UniversityController() {
 		// TODO Auto-generated constructor stub
 		
 	}
-	
+	/** 
+  	*displays the information of all the schools inside of the database
+	*throws NumberFormatException
+	*@param String name, state, location, control, numStudents, females, SATV, SATM,expenses, financialAid, numApplicants, admitted, enrolled, academicScale, socialScale, qOlScale 
+	*
+	*@returns a clone out of the university arrayList
+	*/
 	public static ArrayList<University> searchAllSchools(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale) throws NumberFormatException
 	{
 		
@@ -120,10 +129,18 @@ public class UniversityController {
 					}
 		return schools2;
 		}
+	/** 
+  	*gets all the school details out of the database
+	*@param 
+	*@returns
+	*/
 	private static ArrayList<University> schools = DataBaseController2.getAllSchoolDetails();;
-	/**
-	 * 
-	 */
+	
+	/** 
+  	*displays the topReccommended schools
+	*@param String n
+	*@returns
+	*/
 	public static void topRecommended(String n) {
 		// TODO Auto-generated constructor stub
 		University u = null;
@@ -152,7 +169,14 @@ public class UniversityController {
 			}
 			
 	
-	// This method calculates the distance between two schools by comparing the values of each parameter
+	
+	/** 
+  	*This method calculates the distance between two schools by comparing the values of each parameter
+	*
+	*@param University u1,u2
+	*
+	*@returns all the necessary information needed to produce the distance between the two schools
+	*/
 	public static double dist(University u1, University u2) {
 		//variables to be compared
 		String u1Control,u1State, u1Location;
@@ -212,7 +236,11 @@ public class UniversityController {
 		
 		return d;
 }
-	
+	/** 
+  	*sorts the topReccommended schools
+	*@param double [] a1, String [] a2
+	*@returns
+	*/
 	public static void topRecommendedSort(double a1[], String a2[])
 	{
 		int n = a1.length;
