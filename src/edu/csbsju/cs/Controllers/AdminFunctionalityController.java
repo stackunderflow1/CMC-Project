@@ -1,19 +1,12 @@
 /**
  * packages
  */
-<<<<<<< HEAD
+
 package edu.csbsju.cs.Controllers;
 import java.util.ArrayList;
 
 import edu.csbsju.cs.Entity.*;
-=======
-package src.edu.csbsju.cs.Controllers;
-/*
-*imports
-*/
-import java.util.ArrayList;
-import src.edu.csbsju.cs.Entity.*;
->>>>>>> d2d92422d0415c5f2a9034da3b27186350d03a49
+
 
 /**
  * This class is the Admin Functionality controller that allows an admin to access the database.
@@ -29,17 +22,13 @@ public class AdminFunctionalityController {
 	public AdminFunctionalityController() {
 		// TODO Auto-generated constructor stub
 	}
-<<<<<<< HEAD
 
-	public static int addUser(Users newUser)
-=======
 	/*
 	* Allows the admin to add a user to the database
 	*@param String firstname, lastName, userName, password, type
 	*@return the new user in the database; x
 	*/
-	public static int addUser(String firstName, String lastName, String userName, String password, String type)
->>>>>>> d2d92422d0415c5f2a9034da3b27186350d03a49
+	public static int addUser(Users newUser)
 	{
 		
 	
@@ -68,10 +57,7 @@ public class AdminFunctionalityController {
 	int x = DataBaseController2.editUser(user);
 	return x;
 	}
-<<<<<<< HEAD
-	
-	public static int addUniversity(University uni)
-=======
+
 	/*
 	* Allows the admin to add an university to the database
 	*@param String name, state, location, control
@@ -81,11 +67,7 @@ public class AdminFunctionalityController {
 	*
 	*@return the new university in the database; x
 	*/
-	public static int addUniversity(String name, String state, String location, String control, int numStudents, 
-			 double females, double SATV, double SATM, double expenses, double financialAid, 
-			 int numApplicants, double admitted, double enrolled, int academicScale, int socialScale, 
-			 int qOLScale, ArrayList<String> emphasess)
->>>>>>> d2d92422d0415c5f2a9034da3b27186350d03a49
+	public static int addUniversity(University uni)
 	{
 		int x = DataBaseController2.addUniversity(uni);
 		return x;
@@ -126,11 +108,8 @@ public class AdminFunctionalityController {
 	*/
 	public static int deleteSchool(University uni)
 	{
-<<<<<<< HEAD
 		int x = DataBaseController2.deleteSchool(uni);
-=======
-		int x = return DataBaseController2.deleteSchool(uni);
->>>>>>> d2d92422d0415c5f2a9034da3b27186350d03a49
+
 		return x;
 	}
 	/*
