@@ -130,9 +130,9 @@ private UniversityDBLibrary univDBlib;
 	*
 	*/
 	public boolean addUniversity(University uni) {
-		boolean isThere = false;
+		boolean isNowThere = false;
 		if(!this.checkSchoolName(uni.getName())) {
-			isThere = true;
+			isNowThere = true;
 			univDBlib.university_addUniversity(uni.getName(), uni.getState(), uni.getLocation(),
 					uni.getControl(), uni.getNumStudents(), uni.getFemales(), uni.getSATV(), uni.getSATM(), uni.getExpenses(),
 					uni.getFinancialAid(), uni.getNumApplicants(), uni.getAdmitted(), uni.getEnrolled(), uni.getAcademicScale(),
@@ -145,10 +145,10 @@ private UniversityDBLibrary univDBlib;
 				}
 		}
 		else {
-			isThere = false;
+			isNowThere = false;
 		}
 		
-		return isThere;
+		return isNowThere;
 	}
 			
 	public boolean checkSchoolName(String name) {
@@ -278,9 +278,9 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public void saveSchool(String uName, String school) {
+	public void saveSchool(Users uName, University school) {
 		
-		univDBlib.user_saveSchool(uName, school);
+		univDBlib.user_saveSchool(uName.getUsername(), school.getName());
 		
 	}
 }

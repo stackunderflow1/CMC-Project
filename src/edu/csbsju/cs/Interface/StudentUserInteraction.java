@@ -7,6 +7,8 @@ import edu.csbsju.cs.Controllers.*;
 import edu.csbsju.cs.Entity.*;
 import java.util.*;
 
+import javax.naming.NameNotFoundException;
+
 /**
 * StudentInteraction Class
 *@author DeAndre Bethell, Ryan Graham, Noah Lefebvre, Anton Andrews, Nathan Drees
@@ -20,10 +22,11 @@ public class StudentUserInteraction {
 	*@param 
 	*@returns the a university in the database
 	*/
+	private UniversityController uc = new UniversityController();
 	private StudentFunctionalityController sfc = new StudentFunctionalityController();
-  public University viewUniversity(University uni)
+  public University viewUniversity(University uni) throws NameNotFoundException
   {
-    return StudentFunctionalityController.getSchoolDetails(uni);
+    return sfc.viewSchoolDetails(uni.getName());
   }
   /**
 	* Displays all the saved schools that the user saved in the database
@@ -39,37 +42,29 @@ public class StudentUserInteraction {
 	*@param 
 	*@returns the user's acceptance probability rate
 	*/
-  public String acceptanceProbability() 
+ /* public String acceptanceProbability() 
   {
     return 
-  }
+  }*/
   /**
 	* Displays all recommended universities to the user
 	*@param 
 	*@returns the recommended universities to the user
 	*/
-  public Page viewRecommendedUniversitys(String n) 
+  public void viewRecommendedUniversities(String n) 
   {
-    UniversityController.topRecommended(n);
+    uc.topRecommended(n);
   }
   /**
 	* Saves a university to the database
 	*@param String uName, school
 	*@returns the saved university in the database
 	*/
-  public void saveUniversity(String uName, String school) 
+  public void saveUniversity(University school, Users uName) 
   { 
-    sfc.saveSchool(uName,school);
+    sfc.saveSchool(school, uName);
   }
-  /**
-	* Searches for a university in the database
-	*@param 
-	*@returns the university the user searched for in the database
-	*/
-  public void searchUniversity(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale)
-  { 
-    UniversityController.searchAllSchools(name, state, location, control, numStudents, females,  SATV, SATM, expenses, financialAid, numApplicants, admitted, enrolled, academicScale, socialScale, qOLScale);
-  }
+  
   /**
 	*Deletes a saved school from the database
 	*@param University school

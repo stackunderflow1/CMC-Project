@@ -3,23 +3,31 @@ package edu.csbsju.cs.Drivers;
 
 import edu.csbsju.cs.Controllers.*;
 import edu.csbsju.cs.Entity.*;
+import edu.csbsju.cs.Interface.*;
 import java.io.*;
 import java.util.*;
 
 public class CMCDriver {
 	
 	public static void main(String[]args) {
+		System.out.println("Beginning Test...");
 		
-		String uName = "juser";
-		String password = "user";
+		AdminInteraction ai = new AdminInteraction();
+		DataBaseController dbc = new DataBaseController();
+		StudentUserInteraction sui = new StudentUserInteraction();
+		UniversityController uc = new UniversityController();
+		LogOnController loc = new LogOnController();
+		boolean isLoggedOn =loc.isLoggedOn();
+		ArrayList<String> emp = new ArrayList<String>();
+		emp.add("MATH");
+		emp.add("COMPUTER-SCIENCE");
+		University univ = new University("ANATOL", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
 		
-		String logIn = LogOnController.logOn(uName, password);		
-		if (logIn.equals("logged in as User")){
-			
-		}
-		else if (logIn.equals("logged in as Admin")) {
-			
-		}
+		
+		System.out.println("********** LOG ON **********");
+		System.out.println("**LogOn with valid info**");
+		String logIn = loc.logOn("juser", "user");		
+		System.out.println(logIn);
 		
 		
 		

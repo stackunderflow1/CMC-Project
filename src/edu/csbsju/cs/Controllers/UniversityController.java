@@ -15,6 +15,7 @@ import edu.csbsju.cs.Entity.University;
  * @version March 2019
  */
 public class UniversityController {
+	private DataBaseController dbc = new DataBaseController();
 
 	/**
 	 * Constructor
@@ -31,11 +32,11 @@ public class UniversityController {
 	*
 	*@returns a clone out of the university arrayList
 	*/
-	public static ArrayList<University> searchAllSchools(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale) throws NumberFormatException
+	public ArrayList<University> searchAllSchools(String name, String state, String location, String control, String numStudents, String females, String SATV, String SATM, String expenses, String financialAid, String numApplicants, String admitted, String enrolled, String academicScale, String socialScale, String qOLScale) throws NumberFormatException
 	{
 		
 		
-		ArrayList<University> schools = DataBaseController2.getAllSchoolDetails();
+		ArrayList<University> schools = dbc.getAllSchoolDetails();
 		ArrayList<University> schools2 = (ArrayList<University>) schools.clone();
 
 		for(int i =0; i<schools.size(); i++)
@@ -135,14 +136,14 @@ public class UniversityController {
 	*@param 
 	*@returns
 	*/
-	private static ArrayList<University> schools = DataBaseController2.getAllSchoolDetails();;
+	private ArrayList<University> schools = dbc.getAllSchoolDetails();;
 	
 	/** 
   	*displays the topReccommended schools
 	*@param String n
 	*@returns
 	*/
-	public static void topRecommended(String n) {
+	public void topRecommended(String n) {
 		// TODO Auto-generated constructor stub
 		University u = null;
 		for(int i = 0; i<schools.size(); i++)
@@ -265,6 +266,7 @@ public class UniversityController {
 	}
 	
 	//@param double SATV, double SATM
+	//@param University university
 	public double acceptanceProbability(double SATV, double SATM, University university)
 	  {
 		double hello = university.getSATV() - SATV;

@@ -29,34 +29,28 @@ public class AdminFunctionalityController {
 	*@param String firstname, lastName, userName, password, type
 	*@return the new user in the database; x
 	*/
-	public int addUser(Users newUser)
+	public void addUser(Users newUser)
 	{
-		
-	
-	int x = dbc.addUser(newUser);
-	return x;
+	dbc.addUser(newUser);
+
 	}
 	/*
 	* Allows the admin to delete a user from the database
 	*@param User users
 	*@return the user that was deleted from the database; x
 	*/
-	public int deleteUser(Users user)
+	public void deleteUser(Users user)
 	{
-	
-	int x = dbc.deleteUser(user);
-	return x;
+	dbc.deleteUser(user);
 	}
 	/*
 	* Allows the admin to edit a user in the database
 	*@param Users user
 	*@return the updated user in the database; x
 	*/
-	public int editUser(Users user)
+	public void editUser(Users user)
 	{
-	
-	int x = dbc.editUser(user);
-	return x;
+	 dbc.editUser(user);
 	}
 
 	/*
@@ -68,10 +62,10 @@ public class AdminFunctionalityController {
 	*
 	*@return the new university in the database; x
 	*/
-	public int addUniversity(University uni)
+	public void addUniversity(University uni)
 	{
-		int x = dbc.addUniversity(uni);
-		return x;
+		dbc.addUniversity(uni);
+		
 	}
 	/*
 	* Allows the admin to get all the users in the database
@@ -92,7 +86,7 @@ public class AdminFunctionalityController {
 	public Users getUser(String userName)
 	{
 		ArrayList<Users> stuList = dbc.getAllUsers();
-		Users user = new Users("", "", "", "", "", "");
+		Users user = new Users("", "", "", "", ' ', ' ');
 		for(int i = 0; i< stuList.size(); i++)
 		{
 			if(stuList.get(i).getUsername().equals(userName))
@@ -107,39 +101,35 @@ public class AdminFunctionalityController {
 	*@param University uni
 	*@return the  university deleted from the database; x
 	*/
-	public int deleteSchool(University uni)
+	public void deleteSchool(University uni)
 	{
-		int x = dbc.deleteSchool(uni);
-
-		return x;
+		dbc.deleteSchool(uni);
 	}
 	/*
 	* Allows the admin to edit an university in the database
 	*@param University uni0, uni1
 	*@return the  university edited in the database; x
 	*/
-	public int editSchool(University uni0, University uni1)
+	public void editSchool(University uni)
 	{
-		int x = dbc.editSchool(uni0, uni1);
-		return x;
+		 dbc.editSchool(uni);
 	}
 	/*
 	* Allows the admin to deactivate a university in the database
 	*@param Users user
 	*@return the  university deactivated in the database; x
 	*/
-	public int deactivateUser(Users user)
+	public void deactivateUser(Users user)
 	{
-		if(user.getStatus().equals("Y"))
+		if(user.getStatus()==('Y'))
 		{
-			user.setStatus("N");
+			user.setStatus('N');
 		}
 		else
 		{
-			user.setStatus("Y");
+			user.setStatus('Y');
 		}
-		int x = dbc.editUser(user);
-		return x;
+		dbc.editUser(user);
 	}
 	/*
 	* Allows the admin to print user information in the database
