@@ -16,12 +16,12 @@ import edu.csbsju.cs.Entity.*;
  */
 public class AdminFunctionalityController {
 
-	private DataBaseController dbc = new DataBaseController();
+	private DataBaseController dbc;
 	/**
 	 * Constructor 
 	 */
 	public AdminFunctionalityController() {
-		// TODO Auto-generated constructor stub
+		this.dbc  = new DataBaseController();
 	}
 
 	/*

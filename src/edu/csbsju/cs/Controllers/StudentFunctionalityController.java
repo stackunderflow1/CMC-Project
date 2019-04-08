@@ -123,7 +123,7 @@ public class StudentFunctionalityController {
 		boolean isThere = false;
 		for(SavedSchools sc: list)
 		{
-			if(uni.equals(sc))
+			if(uni.getName().equals(sc.getName()))
 			{
 				isThere = true;
 			}

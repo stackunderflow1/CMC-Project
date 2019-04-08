@@ -17,7 +17,8 @@ public class CMCDriver {
 		StudentUserInteraction sui = new StudentUserInteraction();
 		UniversityController uc = new UniversityController();
 		LogOnController loc = new LogOnController();
-		boolean isLoggedOn =loc.isLoggedOn();
+		
+		
 		ArrayList<String> emp = new ArrayList<String>();
 		emp.add("MATH");
 		emp.add("COMPUTER-SCIENCE");

@@ -25,7 +25,8 @@ public class LogOnController {
 	private Users user;
 	private DataBaseController dbc;
 	private ArrayList<Users> allU;
-	private boolean isLoggedOn = false; 
+	private boolean isSLoggedOn = false;
+	private boolean isALoggedOn = false;
 	/*
 	 * LogOn Constructor
 	 */
@@ -44,11 +45,11 @@ public class LogOnController {
 	 *          deactivated user
 	 */
 	public String logOn(String username, String password) {
-		String result = "Invalid Username";
+		// NEED NEW ONE
 		allU = dbc.getAllUsers();
 		for (int i = 0; i < allU.size(); i++) {
 			if (username.equals(allU.get(i).getUsername())) {
-				System.out.println(allU.get(i).getUsername());
+				
 				if (password.equals(allU.get(i).getPassword())) {
 					if (allU.get(i).getStatus() == 'Y') {
 						System.out.println(allU.get(i).getStatus());
