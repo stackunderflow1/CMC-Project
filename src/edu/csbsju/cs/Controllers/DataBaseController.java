@@ -181,7 +181,7 @@ private UniversityDBLibrary univDBlib;
 	*@returns addSuccess
 	*
 	*/
-	public boolean addUser(Users use) {
+	public void addUser(Users use) {
 		
 		univDBlib.user_addUser(use.getFirstName(), use.getLastName(), use.getUsername(),
 				use.getPassword(), use.getType());
@@ -193,23 +193,18 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public int deleteSchool(University uni) {
-		int success = 0;
-		int delete = univDBlib.university_deleteUniversity(uni.getName());
+	public void deleteSchool(University uni) {
 		
-		ArrayList<String> uniE = uni.getEmphases();
-		int i = 0;
-		while (i < uniE.size()) {
-			int deleteE = univDBlib.university_removeUniversityEmphasis(uni.getName(), uniE.get(i));
-				if (deleteE == -1) {
-				success = deleteE;
+		ArrayList<University> uniE = this.getAllSchoolDetails();
+		for(University u : uniE) {
+			if(u.getName().equals(uni.getName())){
+				for(String i :uni.getEmphases()) {
+					univDBlib.university_removeUniversityEmphasis(u.getName(), i);
+				}
+				univDBlib.university_deleteUniversity(uni.getName());
 			}
-			i++;
 		}
-		if (delete == -1) {
-			success = delete;
-		}
-		return success;
+	
 	}
 	/**
 	* Allows the users to edit a university in the database
@@ -272,13 +267,10 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public int removeSavedSchool(SavedSchools school) {
-		int success = 0;
-		int remove = univDBlib.user_removeSchool(school.getUsername(), school.getSchool());
-		if (remove == -1) {
-			success = remove;
-		}
-		return success;
+	public void removeSavedSchool(SavedSchools school) {
+		
+		univDBlib.user_removeSchool(school.getUsername(), school.getSchool());
+		
 	}
 	/**
 	* Allows the users to save schools in the database
@@ -286,12 +278,9 @@ private UniversityDBLibrary univDBlib;
 	*@returns success
 	*
 	*/
-	public int saveSchool(String uName, String school) {
-		int success = 0;
-		int add = univDBlib.user_saveSchool(uName, school);
-		if (add == -1) {
-			success = add;
-		}
-		return success;
+	public void saveSchool(String uName, String school) {
+		
+		univDBlib.user_saveSchool(uName, school);
+		
 	}
 }
