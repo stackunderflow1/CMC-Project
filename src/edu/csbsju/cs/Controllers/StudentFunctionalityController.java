@@ -30,32 +30,7 @@ public class StudentFunctionalityController {
 	LogOnController loc = new LogOnController();
 	UniversityController uc = new UniversityController();
 
-	/**
-	 * Allows the user to log into the database
-	 * 
-	 * @param String
-	 *            userName, password
-	 * @returns a successful result if you have successfully logged in; Wrong
-	 *          username/password or deactivated account if log in was not
-	 *          successful
-	 */
-	public String logIn(String userName, String password) {
-		String result = "You enetered the wrong username and/or password";
-		String info = loc.logOn(userName, password);
-		if (info.equals("User")) {
-			result = "You logged in!";
-			ArrayList<Users> userList = dbc.getAllUsers();
-			for (int i = 0; i < userList.size(); i++) {
-				if (userName.equals(userList.get(i).getUsername())) {
-					this.stud1 = userList.get(i);
-				}
-			}
-		} else if (info.equals("deactivated")) {
-			result = "Deactived account";
-		}
 
-		return result;
-	}
 	
 	/**
 	* Searches for a university in the database
@@ -77,27 +52,27 @@ public class StudentFunctionalityController {
 	 *            the password of the student
 	 */
 
-	public void editUser(Users u) {
+	/*public void editUser(Users u) {
 		dbc.editUser(u);
 
-		/*if (dbc.editUser(u) == -1) {
+		if (dbc.editUser(u) == -1) {
 			System.out.println("The changes have been made.");
 			return -1;
 		} else {
 			System.out.println("There was an error editing this user");
 			return 0;
-		}*/
+		}
 
-	}
+	}*/
 
 	/**
 	 * Student view a save list of universities the student has saved.
 	 * 
 	 * @return an ArrayList of saved schools
 	 */
-	public static ArrayList<SavedSchools> getSavedSchools(Users u) {
+	public ArrayList<SavedSchools> getSavedSchools(Users u) {
 
-		return getSavedSchools(u);
+		return dbc.getSavedSchools(u);
 	}
 
 	/**
@@ -148,22 +123,23 @@ public class StudentFunctionalityController {
 	 * 
 	 * @return 0 if the school was remove, -1 otherwise
 	 */
-	public int removeUniversity(SavedSchools school) {
-		return removeUniversity(school);
+	public void removeSavedSchool(Users name, String school) {
+		 dbc.removeSavedSchool(name, school);
 	}
+	
+	public void viewRecommendedUniversities(String n) 
+	  {
+	    uc.topRecommended(n);
+	  }
 	
 	// views a school's individual details
 	public University viewSchoolDetails(String universityName) throws NameNotFoundException {
 		
-		for (University univ : dbc.getAllSchoolDetails()) {
-			if (univ.getName().equals(universityName)){
-				return univ;
-			}else {
-				 throw new NameNotFoundException("University: " + universityName + " not found."); 
-			}
-		}
-		return null;
+		return dbc.viewSchoolDetails(universityName);
+		
 	}
+	
+	
 	
 	
 	/*
