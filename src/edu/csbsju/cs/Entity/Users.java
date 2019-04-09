@@ -16,9 +16,10 @@ public class Users {
 	/**
 	*instance variables
 	*/
-	public String firstName, lastName, userName, password, type, status;
+	public String firstName, lastName, userName, password;
+	public char type, status;
 	//Creates a User
-	public Users(String first, String last, String userNames, String passwords, String types, String statuss) {
+	public Users(String first, String last, String userNames, String passwords, char statuss, char types) {
 		this.firstName = first;
 		this.lastName = last;
 		this.userName = userNames;
@@ -92,7 +93,7 @@ public class Users {
 	*@param
 	*@returns the type of the user/ this.type
 	*/
-	public String getType() {
+	public char getType() {
 		return this.type;
 	}
 	
@@ -101,7 +102,7 @@ public class Users {
    	* 
   	* @param type the type of the account
    	*/
-  	public void setType(String type) {
+  	public void setType(char type) {
     		this.type = type;
 	}
 	/**
@@ -109,12 +110,12 @@ public class Users {
 	*@param
 	*@returns the status of the user/ this.status
 	*/
-	public String getStatus() {
+	public char getStatus() {
 		return this.status;
 	}
 
 	
-	public String setStatus(String status)
+	public char setStatus(char status)
 	{
 		this.status = status;
 		return this.status;
@@ -159,7 +160,7 @@ public class Users {
    	* 
   	 * @param status the status of the account
   	 */
- 	public void setStatus1(String status){
+ 	public void setStatus1(char status){
     		this.status = status;
 	}
 }
