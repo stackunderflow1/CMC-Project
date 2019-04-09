@@ -22,7 +22,6 @@ public class StudentUserInteraction {
 	*@param 
 	*@returns the a university in the database
 	*/
-	private UniversityController uc = new UniversityController();
 	private StudentFunctionalityController sfc = new StudentFunctionalityController();
   public University viewUniversity(University uni) throws NameNotFoundException
   {
@@ -35,7 +34,7 @@ public class StudentUserInteraction {
 	*/
   public ArrayList<SavedSchools> viewAllSavedUniversitys(Users u) 
   { 
-    return StudentFunctionalityController.getSavedSchools(u);
+    return sfc.getSavedSchools(u);
   }
   /**
 	* Displays the acceptance probability rate of the student 
@@ -53,7 +52,7 @@ public class StudentUserInteraction {
 	*/
   public void viewRecommendedUniversities(String n) 
   {
-    uc.topRecommended(n);
+    sfc.viewRecommendedUniversities(n);
   }
   /**
 	* Saves a university to the database
@@ -70,9 +69,14 @@ public class StudentUserInteraction {
 	*@param University school
 	*@returns University list without the school that was deleted
 	*/
-  public int removeSavedUniversity(SavedSchools school)
+  public void removeSavedSchool(Users user, String school)
   {
-    return sfc.removeUniversity(school);
+     sfc.removeSavedSchool(user, school);
+  }
+  
+  public University viewSchoolDetails(String universityName) throws NameNotFoundException 
+  {
+	   return sfc.viewSchoolDetails(universityName);
   }
   
  

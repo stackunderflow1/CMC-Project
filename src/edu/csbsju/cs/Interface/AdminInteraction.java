@@ -120,9 +120,9 @@ public class AdminInteraction {
 	*@param Users user
 	*@returns the user in the database
 	*/
-	public static String getUser(Users user)
+	public Users getUser(String user)
 	{
-		return user.print();
+		return afc.getUser(user);
 		
 	}
 
