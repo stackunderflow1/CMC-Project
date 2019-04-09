@@ -84,7 +84,7 @@ public class AdminInteraction {
 	public static void getAllUsers()
 
 	{
-		return AdminFunctionalityController.getAllUsers();
+		AdminFunctionalityController.getAllUsers();
 		
 	}
 	/**

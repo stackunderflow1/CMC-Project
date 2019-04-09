@@ -48,7 +48,7 @@ public static String logOn(String username, String password)
 						result = "Admin";
 					}
 				}
-				else if (allU.get(i).getStatus().equals("Y")) {
+				else if (allU.get(i).getStatus().equals("N")) {
 					result = "deactivated";
 				}
 			}
@@ -64,7 +64,7 @@ public static String logOn(String username, String password)
 *@param String username, password
 @returns successfully logged out or fail if the user fails to log out
 */
-public String logout(String username, String password)
+public static String logOut(String username, String password)
 {
 	allU = DataBaseController2.getAllUsers();
 	String result = "fail";
