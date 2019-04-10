@@ -50,9 +50,18 @@ public class StudentFunctionalityController {
 	 *            the last name of the student
 	 * @param p
 	 *            the password of the student
+	 * @return 
 	 */
 
+<<<<<<< HEAD
+	public void editUser(String uName, String fName, String lName, String pWord) {
+		
+		Users u = dbc.getUser(uName);
+		if(u == null) 
+			  throw new IllegalArgumentException("The username entered was not found");
+=======
 	public void editUser(Users u, String fName, String lName, String pWord) {
+>>>>>>> 760781461ee66750377512b6e066f20dd9dbc6f5
 		
 		u.setFirstName(fName);
 		u.setLastName(lName);

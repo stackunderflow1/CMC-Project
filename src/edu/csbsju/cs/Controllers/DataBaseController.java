@@ -210,6 +210,7 @@ public class DataBaseController {
 	 *
 	 */
 	public void deleteSchool(University uni) {
+		boolean success = false;
 
 		ArrayList<University> uniE = this.getAllSchoolDetails();
 		for (University u : uniE) {
@@ -218,9 +219,17 @@ public class DataBaseController {
 					univDBlib.university_removeUniversityEmphasis(u.getName(), i);
 				}
 				univDBlib.university_deleteUniversity(uni.getName());
+				success = true;
 			}
 		}
-
+		if (success = true)
+		
+			System.out.println("University Successfully Deleted");
+		
+		
+		else 
+			System.out.println("University Unsuccessfully Deleted");
+			
 	}
 
 	/**
@@ -232,11 +241,12 @@ public class DataBaseController {
 	 *
 	 */
 	public void editSchool(University uni) {
+		
 		univDBlib.university_editUniversity(uni.getName(), uni.getState(), uni.getLocation(), uni.getControl(),
 				uni.getNumStudents(), uni.getFemales(), uni.getSATV(), uni.getSATM(), uni.getExpenses(),
 				uni.getFinancialAid(), uni.getNumApplicants(), uni.getAdmitted(), uni.getEnrolled(),
 				uni.getAcademicScale(), uni.getSocialScale(), uni.getqOLScale());
-
+		
 	}
 
 	/**
