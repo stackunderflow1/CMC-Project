@@ -25,6 +25,24 @@ public class TestUniversityContoller {
 		assertNotEquals("ArrayList " + expNonResult,expNonResult, result);
 	}
 	
+	@Test
+	public void testTopReccommended() {
+		fail("Not yet implemented");
+	}
 	
+	@Test
+	public void testDist() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testTopRecommendedSort() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testAcceptanceProbability() {
+		fail("Not yet implemented");
+	}
 
 }

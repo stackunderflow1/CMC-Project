@@ -139,6 +139,22 @@ public class DataBaseControllerTests {
 	
 	@Test
 	public void testRemovedSavedSchool() {
-		
+		fail("Not yet implemented");
 	}
+	
+	@Test
+	public void testViewSchoolDetails() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testSaveSchool() {
+		fail("Not yet implemented");
+	}
+	
+	@Test
+	public void testGetUser() {
+		fail("Not yet implemented");
+	}
+
 }
