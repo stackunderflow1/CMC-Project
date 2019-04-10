@@ -30,25 +30,8 @@ public class StudentFunctionalityController {
 	LogOnController loc = new LogOnController();
 	UniversityController uc = new UniversityController();
 
-<<<<<<< HEAD
-	/**
-	 * Allows the user to log into the database
-	 * 
-	 * @param String
-	 *            userName, password
-	 * @returns a successful result if you have successfully logged in; Wrong
-	 *          username/password or deactivated account if log in was not
-	 *          successful
-	 */
-	public void logIn(String userName, String password) {
-		
-		loc.logOn(userName, password);
-		
-	}
-=======
 
 	
->>>>>>> 568f6485a24f6f2558721eb99f4c2424979cfe3d
 	/**
 	* Searches for a university in the database
 	*@param 
@@ -69,18 +52,19 @@ public class StudentFunctionalityController {
 	 *            the password of the student
 	 */
 
-	/*public void editUser(Users u) {
+	public void editUser(Users u, String fName, String lName, String pWord) {
+		
+		u.setFirstName(fName);
+		u.setLastName(lName);
+		u.setPassword(pWord);
 		dbc.editUser(u);
 
-		if (dbc.editUser(u) == -1) {
-			System.out.println("The changes have been made.");
-			return -1;
-		} else {
-			System.out.println("There was an error editing this user");
-			return 0;
-		}
-
-	}*/
+	}
+	
+	public Users getProfile(Users u)
+	{
+		return dbc.getUser(u.getUsername());
+	}
 
 	/**
 	 * Student view a save list of universities the student has saved.
@@ -99,6 +83,7 @@ public class StudentFunctionalityController {
 	 *            username of the student
 	 * @param school
 	 *            the name of the school
+	 * @return 
 	 * 
 	 * @returns a 0 if saved school, -1 if not
 	 * 
@@ -106,10 +91,19 @@ public class StudentFunctionalityController {
 
 	public void saveSchool(University uni, Users uName) {
 		
-		ArrayList<SavedSchools> list = dbc.getSavedSchools(uName);
-		if(list.size() == 0)
+		//ArrayList<SavedSchools> list = dbc.getSavedSchools(uName);
+		//SavedSchools saved = new SavedSchools(uni, uName.getUsername());
+		int success = dbc.saveSchool(uName, uni);
+		
+		if (success == -1)
 		{
-			dbc.saveSchool(uName, uni);
+			throw new UnsupportedOperationException("System failed");
+		}
+		
+		
+		/*if(list.size() == 0)
+		{
+			 dbc.saveSchool(uName, uni);
 		}
 		
 		boolean isThere = false;
@@ -127,7 +121,7 @@ public class StudentFunctionalityController {
 		else
 		{
 			throw new IllegalArgumentException();
-		}
+		}*/
 				
 			
 	}

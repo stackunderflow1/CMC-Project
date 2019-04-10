@@ -167,6 +167,7 @@ public class UniversityController {
 			sc[i] = univ.getName();
 			i++;
 		}
+		System.out.println("Top Recommended for school '" + n + "':");
 		topRecommendedSort(distances, sc);
 			}
 			
@@ -261,7 +262,7 @@ public class UniversityController {
 				}
 			}
 		}
-		System.out.println("Top Recommended: \n" + a2[1] + "\n" + a2[2] + "\n" +a2[3] + "\n" + a2[4] + "\n" + a2[5]);
+		System.out.println("\n" + a2[1] + "\n" + a2[2] + "\n" +a2[3] + "\n" + a2[4] + "\n" + a2[5]);
 		System.out.println("\n\nwith distances of: \n" + a2[1] + ": " + a1[1] + "\n" + a2[2] + ": " + a1[2] + "\n" +a2[3] + ": " +a1[3] + "\n" + a2[4] + ": " + a1[4] + "\n" + a2[5] + ": " + a1[5]);
 	}
 	

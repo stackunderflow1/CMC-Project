@@ -48,9 +48,16 @@ public class AdminFunctionalityController {
 	*@param Users user
 	*@return the updated user in the database; x
 	*/
-	public void editUser(Users user)
-	{
-	 dbc.editUser(user);
+public void editUser(Users u, String fName, String lName, String uName, String pWord, char status, char type) {
+		
+		u.setFirstName(fName);
+		u.setLastName(lName);
+		u.setUserName(uName);
+		u.setPassword(pWord);
+		u.setStatus(status);
+		u.setType(type);
+		dbc.editUser(u);
+
 	}
 
 	/*
@@ -121,14 +128,8 @@ public class AdminFunctionalityController {
 	*/
 	public void deactivateUser(Users user)
 	{
-		if(user.getStatus()==('Y'))
-		{
+		
 			user.setStatus('N');
-		}
-		else
-		{
-			user.setStatus('Y');
-		}
 		dbc.editUser(user);
 	}
 	/*

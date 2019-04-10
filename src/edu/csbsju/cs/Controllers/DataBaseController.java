@@ -145,7 +145,7 @@ public class DataBaseController {
 	 */
 	public boolean addUniversity(University uni) {
 		boolean isNowThere = false;
-		if (!this.checkSchoolName(uni.getName()) == true) {
+		if (!this.checkSchoolName(uni.getName())) {
 			isNowThere = true;
 			univDBlib.university_addUniversity(uni.getName(), uni.getState(), uni.getLocation(), uni.getControl(),
 					uni.getNumStudents(), uni.getFemales(), uni.getSATV(), uni.getSATM(), uni.getExpenses(),
@@ -261,10 +261,17 @@ public class DataBaseController {
 	 *
 	 */
 	public void editUser(Users u) {
-
+		boolean oof = checkUserName(u.getUsername());
+		
+		if(oof == true)
+		{
 		univDBlib.user_editUser(u.getUsername(), u.getFirstName(), u.getLastName(), u.getPassword(), u.getType(),
 				u.getStatus());
-
+		}
+		
+		else {
+			throw new IllegalArgumentException("User Not Found");
+		}
 	}
 
 	/**
@@ -276,11 +283,12 @@ public class DataBaseController {
 	public ArrayList<SavedSchools> getSavedSchools(Users u){
 		String [][] allSavedSchools = univDBlib.user_getUsernamesWithSavedSchools();
 		ArrayList<SavedSchools> saveList = new ArrayList<SavedSchools>();
+		ArrayList<University> allSchools = new ArrayList<University>();
 		
-		for (int i = 0; i < saveList.size(); i++) {
+		for (int i = 0; i < allSavedSchools.length; i++) {
 			
 			if (allSavedSchools[i][0].equals(u.getUsername())) {
-				ArrayList<University> allSchools = new ArrayList<University>();
+				 allSchools = this.getAllSchoolDetails();
 				
 				 for (int x = 0; x < allSchools.size(); x++){
 					 if(allSavedSchools[i][1].equals(allSchools.get(x).getName())) {
@@ -297,8 +305,7 @@ public class DataBaseController {
 	                		allSchools.get(x).getNumStudents(), allSchools.get(x).getFemales(), allSchools.get(x).getSATV(), allSchools.get(x).getSATM(), allSchools.get(x).getExpenses(),
 	                		allSchools.get(x).getFinancialAid(), allSchools.get(x).getNumApplicants(), allSchools.get(x).getAdmitted(), allSchools.get(x).getEnrolled(),
 	                		allSchools.get(x).getAcademicScale(), allSchools.get(x).getSocialScale(), allSchools.get(x).getqOLScale(), empList);
-	                SavedSchools savedSchool = new SavedSchools(uni, allSavedSchools[i][2
-	                                                                                    ]);
+	                SavedSchools savedSchool = new SavedSchools(uni, allSavedSchools[i][2]);
 	                saveList.add(savedSchool);
 	              }
 	            }          
@@ -386,12 +393,27 @@ public University viewSchoolDetails(String universityName) throws NameNotFoundEx
 	 * 
 	 * @param String
 	 *            uName, String school
+	 * @return 
 	 * @returns success
 	 *
 	 */
-	public void saveSchool(Users uName, University school) {
+	public int saveSchool(Users uName, University school) {
 
-		univDBlib.user_saveSchool(uName.getUsername(), school.getName());
+		return univDBlib.user_saveSchool(uName.getUsername(), school.getName());
 
 	}
+	
+	public Users getUser(String uName) {
+		ArrayList<Users> users = getAllUsers();
+		Users u = null;
+		for(int i = 0; i<users.size(); i++)
+		{
+			if(users.get(i).getUsername().equals(uName)) {
+		 u = users.get(i);
+		}
+		}
+	
+		return u;
+	}
+	
 }
