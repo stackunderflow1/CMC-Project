@@ -143,7 +143,7 @@ public class DataBaseController {
 	 */
 	public boolean addUniversity(University uni) {
 		boolean isNowThere = false;
-		if (!this.checkSchoolName(uni.getName())) {
+		if (!this.checkSchoolName(uni.getName()) == true) {
 			isNowThere = true;
 			univDBlib.university_addUniversity(uni.getName(), uni.getState(), uni.getLocation(), uni.getControl(),
 					uni.getNumStudents(), uni.getFemales(), uni.getSATV(), uni.getSATM(), uni.getExpenses(),
@@ -295,7 +295,8 @@ public class DataBaseController {
 	                		allSchools.get(x).getNumStudents(), allSchools.get(x).getFemales(), allSchools.get(x).getSATV(), allSchools.get(x).getSATM(), allSchools.get(x).getExpenses(),
 	                		allSchools.get(x).getFinancialAid(), allSchools.get(x).getNumApplicants(), allSchools.get(x).getAdmitted(), allSchools.get(x).getEnrolled(),
 	                		allSchools.get(x).getAcademicScale(), allSchools.get(x).getSocialScale(), allSchools.get(x).getqOLScale(), empList);
-	                SavedSchools savedSchool = new SavedSchools(uni, allSavedSchools[i][2]);
+	                SavedSchools savedSchool = new SavedSchools(uni, allSavedSchools[i][2
+	                                                                                    ]);
 	                saveList.add(savedSchool);
 	              }
 	            }          

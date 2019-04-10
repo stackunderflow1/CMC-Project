@@ -39,24 +39,11 @@ public class StudentFunctionalityController {
 	 *          username/password or deactivated account if log in was not
 	 *          successful
 	 */
-	public String logIn(String userName, String password) {
-		String result = "You enetered the wrong username and/or password";
-		String info = loc.logOn(userName, password);
-		if (info.equals("User")) {
-			result = "You logged in!";
-			ArrayList<Users> userList = dbc.getAllUsers();
-			for (int i = 0; i < userList.size(); i++) {
-				if (userName.equals(userList.get(i).getUsername())) {
-					this.stud1 = userList.get(i);
-				}
-			}
-		} else if (info.equals("deactivated")) {
-			result = "Deactived account";
-		}
-
-		return result;
+	public void logIn(String userName, String password) {
+		
+		loc.logOn(userName, password);
+		
 	}
-	
 	/**
 	* Searches for a university in the database
 	*@param 
