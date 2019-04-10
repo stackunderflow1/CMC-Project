@@ -18,6 +18,7 @@ public class SavedSchools extends University {
 	 * instance variables
 	 */
 	private SimpleDateFormat timeStamp;
+	private University uni;
 
 	/**
 	*constructor method
@@ -29,6 +30,12 @@ public class SavedSchools extends University {
                 u.getAdmitted(), u.getEnrolled(), u.getAcademicScale(), 
                 u.getSocialScale(), u.getqOLScale(), u.getEmphases());
          this.timeStamp = new SimpleDateFormat("yyyy-MM-dd HH.mm.ss");
+         this.uni = u;
+	}
+	
+	public University getUniversity()
+	{
+		return uni;
 	}
 
 	/**

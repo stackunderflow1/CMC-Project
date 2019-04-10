@@ -43,13 +43,6 @@ public class Users {
 		return this.firstName;
 	}
 	
-	/**
-	* sets the first name of the user
-	*@param
-	*/
-	public void setFirstname(String firstName){
-    		this.firstName = firstName;
-	}
 	
 	/**
 	* gets the last name of the user
@@ -60,14 +53,6 @@ public class Users {
 		return this.lastName;
 	}
 	
-	/**
-  	 * Sets the last name of user
-   	* 
-   	* @param lastName of user
-   	*/
-  	public void setLastname(String lastName){
-   		this.lastName = lastName;
-	}
 	
 	/**
 	* gets the user name of the user
@@ -97,14 +82,8 @@ public class Users {
 		return this.type;
 	}
 	
-	/**
-   	* Sets the type of the user
-   	* 
-  	* @param type the type of the account
-   	*/
-  	public void setType(char type) {
-    		this.type = type;
-	}
+	
+  	
 	/**
 	* gets the status of the user
 	*@param
@@ -115,11 +94,6 @@ public class Users {
 	}
 
 	
-	public char setStatus(char status)
-	{
-		this.status = status;
-		return this.status;
-	}
 	
 	public String print()
 	{
@@ -160,7 +134,12 @@ public class Users {
    	* 
   	 * @param status the status of the account
   	 */
- 	public void setStatus1(char status){
+ 	public void setStatus(char status){
     		this.status = status;
 	}
+ 	
+ 	public void setType(char type)
+ 	{
+ 		this.type = type;
+ 	}
 }
