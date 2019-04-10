@@ -2,7 +2,7 @@ package edu.csbsju.cs.Controllers;
 
 import dblibrary.project.csci230.*;
 import java.io.*;
-import java.util.*;
+
 
 /** 
  * Before you compile in DrJava, go to Edit > Preferences > Resource Locations 
@@ -47,7 +47,7 @@ public class DBLibraryDriver {
   
   public static void main(String[] args) {
     try{
-      int topx = -1;
+      
       DBLibraryDriver dbld = new DBLibraryDriver(args[0],args[1]);
       System.out.println("university_addUniversity(x,x,x,x,1,1,1,1,1,1,1,1,1,1,1,1) : " + dbld.getUnivDBlib().university_addUniversity("x","x","x","x",1,1,1,1,1,1,1,1,1,1,1,1));
       System.out.println("university_deleteUniversity(x) : " + dbld.getUnivDBlib().university_deleteUniversity("x"));

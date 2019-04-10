@@ -7,7 +7,6 @@ package edu.csbsju.cs.Controllers;
 *imports
 */
 import edu.csbsju.cs.Entity.*;
-import java.io.*;
 import java.util.*;
 
 /**
@@ -22,7 +21,7 @@ public class LogOnController {
 	/**
 	 * private instance variables
 	 */
-	private Users user;
+
 	private DataBaseController dbc;
 	private ArrayList<Users> allU;
 	//private boolean isSLoggedOn = false;
