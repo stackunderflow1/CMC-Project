@@ -52,10 +52,10 @@ public class AdminInteraction {
 	*@param Users user
 	*@returns the updated user
 	*/
-	public void editUser(Users user)
+	public void editUser(Users u, String fName, String lName, String uName, String pWord, char status, char type) 
 	{
 	
-	afc.editUser(user);
+	afc.editUser(u, fName, lName, uName, pWord, status, type);
 	}
 	/**
 	* Adds a new university to the database
@@ -82,10 +82,10 @@ public class AdminInteraction {
 	*@param
 	*@returns all the users in the database
 	*/
-	public void getAllUsers()
+	public ArrayList<Users> getAllUsers()
 
 	{
-		afc.getAllUsers();
+		return afc.getAllUsers();
 
 	}
 	/**
@@ -113,7 +113,7 @@ public class AdminInteraction {
 	*/
 	public void deactivateUser(Users user)
 	{
-		afc.editUser(user);
+		afc.deactivateUser(user);
 	}
 	/**
 	* Gets a user inside of the database

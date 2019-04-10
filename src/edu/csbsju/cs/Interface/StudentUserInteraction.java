@@ -57,6 +57,7 @@ public class StudentUserInteraction {
   /**
 	* Saves a university to the database
 	*@param String uName, school
+ * @return 
 	*@returns the saved university in the database
 	*/
   public void saveUniversity(University school, Users uName) 
@@ -79,6 +80,14 @@ public class StudentUserInteraction {
 	   return sfc.viewSchoolDetails(universityName);
   }
   
+  public void editUser(Users u, String fName, String lName, String pWord) {
+	  sfc.editUser(u, fName, lName, pWord);
+  }
+  
+  public Users getProfile(Users u)
+  {
+	  return sfc.getProfile(u);
+  }
  
   
 }
