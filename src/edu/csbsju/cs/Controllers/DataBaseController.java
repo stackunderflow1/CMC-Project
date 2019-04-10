@@ -12,6 +12,8 @@ import edu.csbsju.cs.Entity.Users;
 
 import java.util.*;
 
+import javax.naming.NameNotFoundException;
+
 /**
  * This class is the Database controller that allows a user to access the
  * database.
@@ -319,6 +321,64 @@ public class DataBaseController {
 
 		univDBlib.user_removeSchool(uName.getUsername(), school);
 
+	}
+public University viewSchoolDetails(String universityName) throws NameNotFoundException {
+		
+	String[][] allSchools1 = univDBlib.university_getUniversities();
+	ArrayList<University> allSchools2 =  new ArrayList<University>();
+	String[][] schoolEmp = univDBlib.university_getNamesWithEmphases();
+	int i = 0;
+			int a = 0;
+			ArrayList<String> emp = new ArrayList<String>();
+			while (a < schoolEmp.length) {
+				if (schoolEmp[a][0].equals(allSchools1[i][0])) {
+					emp.add(schoolEmp[a][1]);
+					a++;
+				} else {
+					a++;
+				}
+			}
+			University school = new University(allSchools1[i][0], allSchools1[i][1], allSchools1[i][2], allSchools1[i][3],
+					Integer.parseInt(allSchools1[i][4]), Double.parseDouble(allSchools1[i][5]),
+					Double.parseDouble(allSchools1[i][6]), Double.parseDouble(allSchools1[i][7]),
+					Double.parseDouble(allSchools1[i][8]), Double.parseDouble(allSchools1[i][9]),
+					Integer.parseInt(allSchools1[i][10]), Double.parseDouble(allSchools1[i][11]),
+					Double.parseDouble(allSchools1[i][12]), Integer.parseInt(allSchools1[i][13]),
+					Integer.parseInt(allSchools1[i][14]), Integer.parseInt(allSchools1[i][15]), emp);
+
+			allSchools2.add(school);
+			if(allSchools1[i][0].equals(universityName))
+			{
+			for (University univ : allSchools2)
+			{
+			System.out.println(allSchools1[i][0] + " " + allSchools1[i][1]+ " " + allSchools1[i][2]+ " " +allSchools1[i][3]+ " " +
+					Integer.parseInt(allSchools1[i][4])+ " " + Double.parseDouble(allSchools1[i][5])+ " " +
+					Double.parseDouble(allSchools1[i][6])+ " " + Double.parseDouble(allSchools1[i][7])+ " " +
+					Double.parseDouble(allSchools1[i][8])+ " " + Double.parseDouble(allSchools1[i][9])+ " " +
+					Integer.parseInt(allSchools1[i][10])+ " " + Double.parseDouble(allSchools1[i][11])+ " " +
+					Double.parseDouble(allSchools1[i][12])+ " " + Integer.parseInt(allSchools1[i][13])+ " " +
+					Integer.parseInt(allSchools1[i][14])+ " " + Integer.parseInt(allSchools1[i][15]));
+			return univ;
+		}
+		i++;
+	}
+	return null;
+	
+	/*	boolean found = false;
+		for (University univ : getAllSchoolDetails()) {
+			if (univ.getName().equals(universityName)){
+				found = true;
+				return univ;
+			}else 
+			{
+				 found = false;
+			}
+		}
+		if(found == false)
+		{
+			throw new NameNotFoundException("University: " + universityName + " not found."); 
+		}
+		return null;*/
 	}
 
 	/**

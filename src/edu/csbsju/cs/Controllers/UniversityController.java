@@ -16,6 +16,7 @@ import edu.csbsju.cs.Entity.University;
  */
 public class UniversityController {
 	private DataBaseController dbc = new DataBaseController();
+	ArrayList<University> schools = dbc.getAllSchoolDetails();
 
 	/**
 	 * Constructor
@@ -36,7 +37,7 @@ public class UniversityController {
 	{
 		
 		
-		ArrayList<University> schools = dbc.getAllSchoolDetails();
+		
 		ArrayList<University> schools2 = (ArrayList<University>) schools.clone();
 
 		for(int i =0; i<schools.size(); i++)
@@ -136,7 +137,6 @@ public class UniversityController {
 	*@param 
 	*@returns
 	*/
-	private ArrayList<University> schools = dbc.getAllSchoolDetails();;
 	
 	/** 
   	*displays the topReccommended schools

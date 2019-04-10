@@ -75,16 +75,19 @@ public class LogOnController {
 		}
 		if(iUser == false)
 		{
-			throw new UnsupportedOperationException("Invalid Username");
+			this.isLoggedOn = false;
+			this.isAdminLoggedOn = false;
 		}
 		else if(iPass == false)
 		{
-			throw new UnsupportedOperationException("Invalid Password");
+			this.isLoggedOn = false;
+			this.isAdminLoggedOn = false;
 		}
 		
 		else if(iAcc == false)
 		{
-			throw new UnsupportedOperationException("Deactivated User");
+			this.isLoggedOn = false;
+			this.isAdminLoggedOn = false;
 		}
 		}
 		

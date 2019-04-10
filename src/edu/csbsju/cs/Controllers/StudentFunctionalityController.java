@@ -30,6 +30,7 @@ public class StudentFunctionalityController {
 	LogOnController loc = new LogOnController();
 	UniversityController uc = new UniversityController();
 
+<<<<<<< HEAD
 	/**
 	 * Allows the user to log into the database
 	 * 
@@ -44,6 +45,10 @@ public class StudentFunctionalityController {
 		loc.logOn(userName, password);
 		
 	}
+=======
+
+	
+>>>>>>> 568f6485a24f6f2558721eb99f4c2424979cfe3d
 	/**
 	* Searches for a university in the database
 	*@param 
@@ -64,27 +69,27 @@ public class StudentFunctionalityController {
 	 *            the password of the student
 	 */
 
-	public void editUser(Users u) {
+	/*public void editUser(Users u) {
 		dbc.editUser(u);
 
-		/*if (dbc.editUser(u) == -1) {
+		if (dbc.editUser(u) == -1) {
 			System.out.println("The changes have been made.");
 			return -1;
 		} else {
 			System.out.println("There was an error editing this user");
 			return 0;
-		}*/
+		}
 
-	}
+	}*/
 
 	/**
 	 * Student view a save list of universities the student has saved.
 	 * 
 	 * @return an ArrayList of saved schools
 	 */
-	public static ArrayList<SavedSchools> getSavedSchools(Users u) {
+	public ArrayList<SavedSchools> getSavedSchools(Users u) {
 
-		return getSavedSchools(u);
+		return dbc.getSavedSchools(u);
 	}
 
 	/**
@@ -135,22 +140,23 @@ public class StudentFunctionalityController {
 	 * 
 	 * @return 0 if the school was remove, -1 otherwise
 	 */
-	public int removeUniversity(SavedSchools school) {
-		return removeUniversity(school);
+	public void removeSavedSchool(Users name, String school) {
+		 dbc.removeSavedSchool(name, school);
 	}
+	
+	public void viewRecommendedUniversities(String n) 
+	  {
+	    uc.topRecommended(n);
+	  }
 	
 	// views a school's individual details
 	public University viewSchoolDetails(String universityName) throws NameNotFoundException {
 		
-		for (University univ : dbc.getAllSchoolDetails()) {
-			if (univ.getName().equals(universityName)){
-				return univ;
-			}else {
-				 throw new NameNotFoundException("University: " + universityName + " not found."); 
-			}
-		}
-		return null;
+		return dbc.viewSchoolDetails(universityName);
+		
 	}
+	
+	
 	
 	
 	/*
