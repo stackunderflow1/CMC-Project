@@ -19,9 +19,9 @@ public class CMCDriver {
 		UniversityController uc = new UniversityController();
 		LogOnController loc = new LogOnController();
 		Users user = ai.getUser("juser");
-		University uni = sui.viewSchoolDetails("ABILENE CHRISTIAN UNIVERSITY");
+		DataBaseController dbc = new DataBaseController();
 		
-		ArrayList<SavedSchools> save = sui.viewAllSavedUniversitys(user);
+		
 		ArrayList<String> emp = new ArrayList<String>();
 		emp.add("MATH");
 		emp.add("COMPUTER-SCIENCE");
@@ -45,21 +45,20 @@ public class CMCDriver {
 		loc.logOn("luser", "user");		
 		System.out.println("LogOn Status: " + loc.isLoggedOn());
 		
-		System.out.println("\n\n\n********** SEARCH SCHOOLS **********\n");
 		
-		String option = "";
+		System.out.println("\n\n\n********** SEARCH SCHOOLS **********\n");
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter School name");
 		String school = sc.nextLine();
-		System.out.println("Enter state");
+		System.out.println("Enter State");
 		String state = sc.nextLine();
-		System.out.println("Enter location");
+		System.out.println("Enter Location");
 		String location = sc.nextLine();
-		System.out.println("Enter control");
+		System.out.println("Enter Control");
 		String control = sc.nextLine();
-		System.out.println("Enter number of Students");
+		System.out.println("Enter Number of Students");
 		String numStudents = sc.nextLine();
-		System.out.println("Enter percentage of females");
+		System.out.println("Enter Percentage of Females");
 		String females = sc.nextLine();
 		System.out.println("Enter SAT Verbal Score");
 		String SATV = sc.nextLine();
@@ -71,9 +70,9 @@ public class CMCDriver {
 		String financial = sc.nextLine();
 		System.out.println("Enter Number of Applicants");
 		String numApp = sc.nextLine();
-		System.out.println("Enter percentage of Admitted Students");
+		System.out.println("Enter Percentage of Admitted Students");
 		String admitted = sc.nextLine();
-		System.out.println("Enter enrolled Students");
+		System.out.println("Enter Enrolled Students");
 		String enrolled = sc.nextLine();
 		System.out.println("Enter Academic Scale between 1 and 5");
 		String aScale = sc.nextLine();
@@ -87,96 +86,129 @@ public class CMCDriver {
 			System.out.println(searchR.get(i).getName());
 		}
 		
-		System.out.println("Do you want to search again?(Enter 'yes' or 'no'");
-		option = sc.nextLine();
-		option.toUpperCase();
-		
-		if(option == "YES")
-		{
-			System.out.println("Enter School name");
-			school = sc.nextLine();
-			System.out.println("Enter state");
-			state = sc.nextLine();
-			System.out.println("Enter location");
-			location = sc.nextLine();
-			System.out.println("Enter controll");
-			control = sc.nextLine();
-			System.out.println("Enter number of Students");
-			numStudents = sc.nextLine();
-			System.out.println("Enter percentage of females");
-			females = sc.nextLine();
-			System.out.println("Enter SAT Verbal Score");
-			SATV = sc.nextLine();
-			System.out.println("Enter SAT Math Score");
-			SATM = sc.nextLine();
-			System.out.println("Enter Exspenes");
-			expenses = sc.nextLine();
-			System.out.println("Enter Finacial Aid");
-			financial = sc.nextLine();
-			System.out.println("Enter Numenbr of Applications");
-			numApp = sc.nextLine();
-			System.out.println("Enter percentage of Admitted Students");
-			admitted = sc.nextLine();
-			System.out.println("Enter enrolled Students");
-			enrolled = sc.nextLine();
-			System.out.println("Enter Academic Scale between 1 and 5");
-			aScale = sc.nextLine();
-			System.out.println("Enter Social Scale between1 and 5");
-			sScale = sc.nextLine();
-			System.out.println("Enter Quality of Life Scale between 1 and 5");
-			qOLScale = sc.nextLine();
-			searchR = uc.searchAllSchools(school, state, location, control, numStudents, 
-					females, SATV, SATM, expenses, financial, numApp, admitted, enrolled, aScale, sScale, qOLScale);
-			for (int i = 0; i < searchR.size(); i++) {
-				System.out.println(searchR.get(i));
-			}
-			System.out.println("Do you want to search again?(Enter 'yes' or 'no'");
-			option = sc.nextLine();
-			option.toUpperCase();
-		}
 		sc.close();
 		
+		
 		System.out.println("\n\n\n********** VIEW SCHOOL **********\n");
-		System.out.print(sui.viewSchoolDetails("ABILENE CHRISTIAN UNIVERSITY"));
+		University uni =  sui.viewSchoolDetails("ABILENE CHRISTIAN UNIVERSITY");
+		ArrayList<SavedSchools> save = sui.viewAllSavedUniversitys(user);
 		
-		System.out.println("\n\n\n********** SAVE SCHOOL **********\n");
+		System.out.println("\n\n********** VIEW SAVED SCHOOLS **********\n");
+		System.out.println("**List of currently saved schools**");
+		for(int i = 0; i< save.size(); i++)
+		{
+			System.out.println(save.get(i).getUniversity().print());
+		}
+		
+		System.out.println("\n\n********** SAVE SCHOOL **********\n");
+		System.out.println("**Original list of saved schools**\n");
+		save = sui.viewAllSavedUniversitys(user);
+		for(int i = 0; i< save.size(); i++)
+		{
+		System.out.println(save.get(i).getUniversity().print());
+		}
 		sui.saveUniversity(uni, user);
-		for (int i = 0; i < save.size(); i++)
+		System.out.println("\n**New list of saved schools after saving school**");
+		ArrayList<SavedSchools>saveTo = sui.viewAllSavedUniversitys(user);
+		for(int i = 0; i< saveTo.size(); i++)
 		{
-		System.out.println(i);
+			System.out.println(saveTo.get(i).getUniversity().print() + "\n");
 		}
 		
-		System.out.println("\n\n\n********** VIEW SAVED SCHOOLS **********\n");
-		for (int i = 0; i < save.size(); i++)
-		{
-		System.out.println(i);
-		}
 		
-		System.out.println("\n\n\n********** REMOVE SAVED SCHOOL **********\n");
+		
+		System.out.println("\n\n********** REMOVE SAVED SCHOOL **********\n");
+		System.out.println("**List of currently saved schools**\n");
+		saveTo = sui.viewAllSavedUniversitys(user);
+		for(int i = 0; i< saveTo.size(); i++)
+		{
+		System.out.println(saveTo.get(i).print());
+		}
 		sui.removeSavedSchool(user, uni.getName());
-		for (int i = 0; i < save.size(); i++)
+		System.out.println("**New list of saved schools after removing saved school**");
+		ArrayList<SavedSchools>save3 = sui.viewAllSavedUniversitys(user);
+		for(int i = 0; i< save3.size(); i++)
 		{
-		System.out.println(i);
+		System.out.println(save3.get(i).getUniversity().print());
 		}
 		
-		System.out.println("\n\n\n********** VIEW RECOMMENDED SCHOOLS **********\n");
+		
+		System.out.println("\n\n********** VIEW RECOMMENDED SCHOOLS **********\n\n");
 		sui.viewRecommendedUniversities(uni.getName());
-	
+		
+		System.out.println("\n\n********** VIEW PROFILE **********\n");
+		System.out.println("\n\n*** Creates Dummy User ***\n");
+		ai.addUser("Imad", "Rahal", "irahal", "pass", 'Y', 'u');
+		Users dummy = new Users("irahal", "pass");
+		//ai.deleteUser(dummy);
+		ArrayList<Users> allUsers = ai.getAllUsers();
+		Users u = sui.getProfile(dummy);
+		System.out.println(u.getFirstName());
+		System.out.println(u.getLastName());
+		System.out.println(u.getUsername());
+		System.out.println(u.getPassword());
+		System.out.println(u.getStatus());
+		System.out.println(u.getType());
+		for(Users i: allUsers)
+		{
+			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
+					i.getType());
+		}
+		
+		System.out.println("\n\n********** EDIT PROFILE **********\n");
+		sui.editUser(dummy, "Hello", "World", "password");
+		ArrayList<Users> allUsers2 = ai.getAllUsers();
+		for(Users i: allUsers2)
+		{
+			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
+					i.getType());
+		}
+		
+		System.out.println("\n\n********** ADD USER**********\n");
+		ai.addUser("Anton", "Andrews", "aandrews", "pass", 'Y', 'u');
+		Users dummy1 = new Users("aandrews", "pass");
+		//ai.deleteUser(dummy1);
+		ArrayList<Users> allUsers3 = ai.getAllUsers();
+		for(Users u1: allUsers3)
+		{
+			System.out.println(u1.getFirstName() + ", " + u1.getLastName() + ", " + u1.getUsername() + ", " + u1.getPassword() + ", " + u1.getStatus() + ", " +
+					u1.getType());
+			
+		}
+		
+		System.out.println("\n\n********** EDIT USER **********\n");
+		ai.editUser(dummy1, "I", "AmGroot","iamgroot", "pword", 'Y', 'u');
+		ArrayList<Users> allUsers4 = ai.getAllUsers();
+		for(Users i: allUsers4)
+		{
+			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
+					i.getType());
+		}
+		
+		System.out.println("\n\n********** DEACTIVATE USER **********\n");
+		ai.deactivateUser(dummy1);
+		ArrayList<Users> allUsers6 = ai.getAllUsers();
+		for(Users i: allUsers6)
+		{
+			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
+					i.getType());
+		}
+		
+		System.out.println("\n\n********** DELETE USER **********\n");
+		ai.deleteUser(dummy1);
+		ArrayList<Users> allUsers5 = ai.getAllUsers();
+		for(Users i: allUsers5)
+		{
+			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
+					i.getType());
+		}
+		
+		System.out.println("\n\n********** ADD UNIVERSITY **********\n");
 		
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 		/**Scanner sc = new Scanner(System.in);
 		System.out.println("Enter Username: ");
 		String uName = sc.nextLine();
