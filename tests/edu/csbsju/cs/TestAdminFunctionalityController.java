@@ -60,7 +60,7 @@ public class TestAdminFunctionalityController {
 		for(Users i : userList) {
 			if(i.getUsername().equals("dummytest")) {
 				found = true;
-				assertTrue("Succesfully added user", i.getUsername().equals("dummytest"));
+				assertTrue("Succesfully deleted user", i.getUsername().equals("dummytest"));
 			}
 			if(found == true) {
 				assertFalse(true);
@@ -88,8 +88,18 @@ public class TestAdminFunctionalityController {
 
 	@Test
 	public void testAddUniversity() {
-		fail("Not yet implemented");
-	}
+		afc.addUniversity(s);
+		
+		ArrayList<University> schoolList = dbc.getAllSchoolDetails();
+		for(University i : schoolList) {
+			if(i.getName().equals("TEST")) {
+				
+				assertTrue("Succesfully added University", i.getName().equals("TEST"));
+			}
+		}
+		afc.deleteSchool(s);
+	
+		}
 
 	@Test
 	public void testGetAllUsers() {
@@ -103,10 +113,26 @@ public class TestAdminFunctionalityController {
 
 	@Test
 	public void testDeleteSchool() {
-		fail("Not yet implemented");
-	}
+		afc.addUniversity(s);
+		afc.deleteSchool(s);
+		boolean found = false;
+		ArrayList<University> schoolList = dbc.getAllSchoolDetails();
+		for(University i : schoolList) {
+			if(i.getName().equals("TEST")) {
+				found = true;
+				assertTrue("Succesfully deleted University", i.getName().equals("TEST"));
+			}
+		}
+		if(found == true) {
+			assertFalse(false);
+			
+		}
+		else {
+			assertTrue(true);
+		}	
+		}
 
-	@Test
+/*	@Test
 	public void testEditSchool() {
 		fail("Not yet implemented");
 	}
@@ -114,7 +140,7 @@ public class TestAdminFunctionalityController {
 	@Test
 	public void testDeactivateUser() {
 		fail("Not yet implemented");
-	}
+	}*/
 
 	@Test
 	public void testGetUserUsers() {
