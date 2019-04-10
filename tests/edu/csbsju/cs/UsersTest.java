@@ -4,12 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import edu.csbsju.cs.Entity.*;
 
 public class UsersTest {
 	Users u;
 	
 	@Before
-	public void setUp() throws Exception() {
+	public void setUp() throws Exception {
 		u = new Users("dummy", "test", "testU", "password", 'u','Y');
 	}
 	

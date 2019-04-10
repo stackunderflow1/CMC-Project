@@ -31,19 +31,28 @@ public class LogOnControllerTest {
 		assertEquals("Logged on is " + expResult,expResult, result);
 	}
 	
-	@Test(expected=UnsupportedOperationException.class)
+	@Test
 	public void testDeactivatedUserLogOn() {
 		log.logOn("luser", "user");
+		boolean expResult = false;
+		boolean result = log.isLoggedOn();
+		assertEquals("Logged on is " + expResult,expResult, result);
 	}
 	
-	@Test(expected=UnsupportedOperationException.class)
+	@Test
 	public void testWrongUsernameLogOn() {
 		log.logOn("failure", "user");
+		boolean expResult = false;
+		boolean result = log.isLoggedOn();
+		assertEquals("Logged on is " + expResult,expResult, result);
 	}
 	
-	@Test(expected=UnsupportedOperationException.class)
+	@Test
 	public void testWrongPasswordLogOn() {
 		log.logOn("juser", "failure");
+		boolean expResult = false;
+		boolean result = log.isLoggedOn();
+		assertEquals("Logged on is " + expResult,expResult, result);
 	}
 	
 	@Test

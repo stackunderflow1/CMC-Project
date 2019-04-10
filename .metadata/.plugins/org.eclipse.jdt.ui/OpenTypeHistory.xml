@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-<typeInfo handle="=CMC-Project/src&lt;edu.csbsju.cs.Controllers{LogOnController.java[LogOnController" modifiers="1" timestamp="1554791004000"/>
+<typeInfo handle="=CMC-Project/src&lt;edu.csbsju.cs.Controllers{LogOnController.java[LogOnController" modifiers="1" timestamp="1554868100000"/>
+<typeInfo handle="=CMC-Project/src&lt;edu.csbsju.cs.Controllers{UniversityController.java[UniversityController" modifiers="1" timestamp="1554903046000"/>
+<typeInfo handle="=CMC-Project/src&lt;edu.csbsju.cs.Controllers{StudentFunctionalityController.java[StudentFunctionalityController" modifiers="1" timestamp="1554903046000"/>
+<typeInfo handle="=CMC-Project/src&lt;edu.csbsju.cs.Controllers{AdminFunctionalityController.java[AdminFunctionalityController" modifiers="1" timestamp="1554903046000"/>
 </typeInfoHistroy>
