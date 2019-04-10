@@ -80,8 +80,9 @@ public class StudentUserInteraction {
 	   return sfc.viewSchoolDetails(universityName);
   }
   
-  public void editUser(Users u, String fName, String lName, String pWord) {
-	  sfc.editUser(u, fName, lName, pWord);
+
+  public void editUser(String uName, String fName, String lName, String pWord) {
+	  sfc.editUser(uName, fName, lName, pWord);
   }
   
   public Users getProfile(Users u)

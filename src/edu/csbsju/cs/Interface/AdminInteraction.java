@@ -6,6 +6,9 @@ package edu.csbsju.cs.Interface;
  * imports
  */
 import java.util.ArrayList;
+
+import javax.naming.NameNotFoundException;
+
 import edu.csbsju.cs.Entity.*;
 import edu.csbsju.cs.Controllers.*;
 
@@ -52,10 +55,10 @@ public class AdminInteraction {
 	*@param Users user
 	*@returns the updated user
 	*/
-	public void editUser(Users u, String fName, String lName, String uName, String pWord, char status, char type) 
+
+	public void editUser(String fName, String lName, String uName, String pWord, char status, char type) 
 	{
-	
-	afc.editUser(u, fName, lName, uName, pWord, status, type);
+	afc.editUser(fName, lName, uName, pWord, status, type);
 	}
 	/**
 	* Adds a new university to the database
@@ -99,12 +102,17 @@ public class AdminInteraction {
 	}
 	/**
 	* Edits a university in the database
+	 * @param university 
 	*@param University uni0, uni1
+	 * @throws NameNotFoundException 
 	*@returns the updated school list with the edited school
 	*/
-	public void editSchool(University uni0)
+	public void editSchool(String old, String name, String state, String location, String control, int numStudents, 
+			 double females, double SATV, double SATM, double expenses, double financialAid, 
+			 int numApplicants, double admitted, double enrolled, int academicScale, int socialScale, 
+			 int qOLScale, ArrayList<String> emp) throws NameNotFoundException
 	{
-		afc.editSchool(uni0);
+		afc.editSchool(old, name, state, location, control, numStudents, females, SATV, SATM, expenses, financialAid, numApplicants, admitted, enrolled, academicScale, socialScale, qOLScale, emp);
 	}
 	/**
 	* Deactivates a user
@@ -114,7 +122,18 @@ public class AdminInteraction {
 	public void deactivateUser(Users user)
 	{
 		afc.deactivateUser(user);
+
 	}
+	
+	public void activateUser(Users user)
+	{
+		afc.activateUser(user);
+	}
+	
+	 public University viewSchoolDetails(String universityName) throws NameNotFoundException 
+	  {
+		   return afc.viewSchoolDetails(universityName);
+	  }
 	/**
 	* Gets a user inside of the database
 	*@param Users user
@@ -125,5 +144,7 @@ public class AdminInteraction {
 		return afc.getUser(user);
 		
 	}
+	
+	
 
 }
