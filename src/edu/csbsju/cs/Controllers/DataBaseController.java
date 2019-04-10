@@ -339,8 +339,9 @@ public class DataBaseController {
 		univDBlib.user_removeSchool(uName.getUsername(), school);
 
 	}
-public University viewSchoolDetails(String universityName) throws NameNotFoundException {
+	public University viewSchoolDetails(String universityName) {
 		
+	boolean found = false;
 	String[][] allSchools1 = univDBlib.university_getUniversities();
 	ArrayList<University> allSchools2 =  new ArrayList<University>();
 	String[][] schoolEmp = univDBlib.university_getNamesWithEmphases();
@@ -364,37 +365,38 @@ public University viewSchoolDetails(String universityName) throws NameNotFoundEx
 					Integer.parseInt(allSchools1[i][14]), Integer.parseInt(allSchools1[i][15]), emp);
 
 			allSchools2.add(school);
-			if(allSchools1[i][0].equals(universityName))
+			for (int x = 0; x<allSchools2.size(); x++)
+			
 			{
-			for (University univ : allSchools2)
+			if(allSchools1[x][0].equals(universityName))
 			{
-			System.out.println(allSchools1[i][0] + " " + allSchools1[i][1]+ " " + allSchools1[i][2]+ " " +allSchools1[i][3]+ " " +
-					Integer.parseInt(allSchools1[i][4])+ " " + Double.parseDouble(allSchools1[i][5])+ " " +
-					Double.parseDouble(allSchools1[i][6])+ " " + Double.parseDouble(allSchools1[i][7])+ " " +
-					Double.parseDouble(allSchools1[i][8])+ " " + Double.parseDouble(allSchools1[i][9])+ " " +
-					Integer.parseInt(allSchools1[i][10])+ " " + Double.parseDouble(allSchools1[i][11])+ " " +
-					Double.parseDouble(allSchools1[i][12])+ " " + Integer.parseInt(allSchools1[i][13])+ " " +
-					Integer.parseInt(allSchools1[i][14])+ " " + Integer.parseInt(allSchools1[i][15]));
-			return univ;
+			System.out.println(allSchools1[x][0] + " " + allSchools1[x][1]+ " " + allSchools1[x][2]+ " " +allSchools1[x][3]+ " " +
+					Integer.parseInt(allSchools1[x][4])+ " " + Double.parseDouble(allSchools1[x][5])+ " " +
+					Double.parseDouble(allSchools1[x][6])+ " " + Double.parseDouble(allSchools1[x][7])+ " " +
+					Double.parseDouble(allSchools1[x][8])+ " " + Double.parseDouble(allSchools1[x][9])+ " " +
+					Integer.parseInt(allSchools1[x][10])+ " " + Double.parseDouble(allSchools1[x][11])+ " " +
+					Double.parseDouble(allSchools1[x][12])+ " " + Integer.parseInt(allSchools1[x][13])+ " " +
+					Integer.parseInt(allSchools1[x][14])+ " " + Integer.parseInt(allSchools1[x][15]));
+			 University uni = allSchools2.get(x);
+			 return uni;
 		}
 		i++;
 	}
 	return null;
-	
-	/*	boolean found = false;
-		for (University univ : getAllSchoolDetails()) {
-			if (univ.getName().equals(universityName)){
-				found = true;
-				return univ;
-			}else 
+		/*ArrayList<University> list = getAllSchoolDetails();
+		boolean found = false;
+		for(int i = 0; i<list.size(); i++)
+		{
+			if(list.get(i).equals(universityName))
 			{
-				 found = false;
+				list.get(i).print();
+				found = true;
+				return list.get(i);
 			}
 		}
 		if(found == false)
-		{
-			throw new NameNotFoundException("University: " + universityName + " not found."); 
-		}
+		throw new IllegalArgumentException("University: '" + universityName + "' was not found");
+		
 		return null;*/
 	}
 

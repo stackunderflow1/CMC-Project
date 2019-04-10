@@ -108,7 +108,7 @@ public class CMCDriver {
 		System.out.println(save.get(i).getUniversity().print());
 		}
 		sui.saveUniversity(uni, user);
-		System.out.println("\n**New list of saved schools after saving school**");
+		System.out.println("\n**New list of saved schools after saving school**\n");
 		ArrayList<SavedSchools>saveTo = sui.viewAllSavedUniversitys(user);
 		for(int i = 0; i< saveTo.size(); i++)
 		{
@@ -125,7 +125,7 @@ public class CMCDriver {
 		System.out.println(saveTo.get(i).print());
 		}
 		sui.removeSavedSchool(user, uni.getName());
-		System.out.println("**New list of saved schools after removing saved school**");
+		System.out.println("\n**New list of saved schools after removing saved school**\n");
 		ArrayList<SavedSchools>save3 = sui.viewAllSavedUniversitys(user);
 		for(int i = 0; i< save3.size(); i++)
 		{
@@ -137,74 +137,74 @@ public class CMCDriver {
 		sui.viewRecommendedUniversities(uni.getName());
 		
 		System.out.println("\n\n********** VIEW PROFILE **********\n");
-		System.out.println("\n\n*** Creates Dummy User ***\n");
-		ai.addUser("Imad", "Rahal", "irahal", "pass", 'Y', 'u');
+		System.out.println("*** 'Creates Dummy User' ***\n");
+		ai.addUser("Imad", "Rahal", "irahal", "pass", 'u', 'Y');
 		Users dummy = new Users("irahal", "pass");
 		//ai.deleteUser(dummy);
 		ArrayList<Users> allUsers = ai.getAllUsers();
 		Users u = sui.getProfile(dummy);
+		System.out.println("*** Shows Profile of Dummy User***");
 		System.out.println(u.getFirstName());
 		System.out.println(u.getLastName());
 		System.out.println(u.getUsername());
 		System.out.println(u.getPassword());
-		System.out.println(u.getStatus());
 		System.out.println(u.getType());
+		System.out.println(u.getStatus());
+		System.out.println("\n*** New List After Adding Dummy User***");
 		for(Users i: allUsers)
 		{
-			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
-					i.getType());
+			System.out.println("\n"+ i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getType() + "," + i.getStatus());
 		}
 		
 		System.out.println("\n\n********** EDIT PROFILE **********\n");
-		sui.editUser(dummy, "Hello", "World", "password");
-		ArrayList<Users> allUsers2 = ai.getAllUsers();
-		for(Users i: allUsers2)
+		sui.editProfile(dummy.getUsername(), "Hello", "World", "password");
+		System.out.println("*** List of Users After Edit Profile of Dummy User***\n");
+		allUsers = ai.getAllUsers();
+		for(Users i: allUsers)
 		{
-			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
-					i.getType());
+			System.out.println("\n"+i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getType() + "," + i.getStatus());
 		}
 		
-		System.out.println("\n\n********** ADD USER**********\n");
-		ai.addUser("Anton", "Andrews", "aandrews", "pass", 'Y', 'u');
+		System.out.println("\n\n********** ADD USER**********");
+		ai.addUser("Anton", "Andrews", "aandrews", "pass", 'u', 'Y');
 		Users dummy1 = new Users("aandrews", "pass");
+		//ai.deleteUser(dummy);
 		//ai.deleteUser(dummy1);
-		ArrayList<Users> allUsers3 = ai.getAllUsers();
-		for(Users u1: allUsers3)
+		allUsers = ai.getAllUsers();
+		for(Users i: allUsers)
 		{
-			System.out.println(u1.getFirstName() + ", " + u1.getLastName() + ", " + u1.getUsername() + ", " + u1.getPassword() + ", " + u1.getStatus() + ", " +
-					u1.getType());
+			System.out.println("\n"+i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getType() + "," + i.getStatus());
 			
 		}
 		
-		System.out.println("\n\n********** EDIT USER **********\n");
-		ai.editUser(dummy1, "I", "AmGroot","iamgroot", "pword", 'Y', 'u');
-		ArrayList<Users> allUsers4 = ai.getAllUsers();
-		for(Users i: allUsers4)
+		System.out.println("\n\n********** EDIT USER **********");
+		ai.editUser(dummy1.getUsername(),"I", "AmGroot", "pword", 'u', 'Y');
+		 allUsers = ai.getAllUsers();
+		for(Users i: allUsers)
 		{
-			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
-					i.getType());
+			System.out.println("\n"+i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getType() + "," + i.getStatus());
 		}
 		
-		System.out.println("\n\n********** DEACTIVATE USER **********\n");
-		ai.deactivateUser(dummy1);
-		ArrayList<Users> allUsers6 = ai.getAllUsers();
-		for(Users i: allUsers6)
+		System.out.println("\n\n********** DEACTIVATE USER **********");
+		ai.changeStatus(dummy1.getUsername());
+		allUsers = ai.getAllUsers();
+		for(Users i: allUsers)
 		{
-			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
-					i.getType());
+			System.out.println("\n"+i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getType() + "," + i.getStatus());
 		}
 		
-		System.out.println("\n\n********** DELETE USER **********\n");
+		System.out.println("\n\n********** DELETE USERS **********");
 		ai.deleteUser(dummy1);
-		ArrayList<Users> allUsers5 = ai.getAllUsers();
-		for(Users i: allUsers5)
+		ai.deleteUser(dummy);
+		System.out.println("*** Deletes All Newly Added Users***\n");
+		allUsers = ai.getAllUsers();
+		for(Users i: allUsers)
 		{
-			System.out.println(i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getStatus() + ", " +
-					i.getType());
+			System.out.println("\n"+i.getFirstName() + ", " + i.getLastName() + ", " + i.getUsername() + ", " + i.getPassword() + ", " + i.getType() + "," + i.getStatus());
 		}
 		
 		System.out.println("\n\n********** ADD UNIVERSITY **********\n");
-		
+		//ai.addUniversity(name, state, location, control, numStudents, females, SATV, SATM, expenses, financialAid, numApplicants, admitted, enrolled, academicScale, socialScale, qOLScale, emphasess);
 		
 		
 		

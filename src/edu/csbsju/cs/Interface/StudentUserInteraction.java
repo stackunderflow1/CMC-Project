@@ -81,8 +81,8 @@ public class StudentUserInteraction {
   }
   
 
-  public void editUser(String uName, String fName, String lName, String pWord) {
-	  sfc.editUser(uName, fName, lName, pWord);
+  public void editProfile(String uName, String fName, String lName, String pWord) {
+	  sfc.editProfile(uName, fName, lName, pWord);
   }
   
   public Users getProfile(Users u)

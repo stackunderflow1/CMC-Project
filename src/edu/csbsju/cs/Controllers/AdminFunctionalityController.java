@@ -51,7 +51,7 @@ public class AdminFunctionalityController {
 	*@return the updated user in the database; x
 	*/
 
-public void editUser(String fName, String lName, String uName, String pWord, char status, char type) {
+public void editUser(String uName, String fName, String lName, String pWord, char type, char status) {
 
 if(!(type == 'u' || type == 'a'))
 	  throw new IllegalArgumentException("The type entered is invalid");
@@ -65,7 +65,6 @@ else if(!(status == 'Y' || status == 'N'))
 	
 		u.setFirstName(fName);
 		u.setLastName(lName);
-		u.setUserName(uName);
 		u.setPassword(pWord);
 		u.setStatus(status);
 		u.setType(type);
@@ -166,26 +165,28 @@ else if(!(status == 'Y' || status == 'N'))
 	*@param Users user
 	*@return the  university deactivated in the database; x
 	*/
-	public void deactivateUser(Users user)
+	public void changeStatus(String uName)
 	{
-
+		boolean found = false;
+		Users user = getUser(uName);
+		if(user == null) 
+			  throw new IllegalArgumentException("The username entered was not found");
 		if(user.getStatus() == 'Y') {
+			//System.out.print(user.getStatus());
 			user.setStatus('N');
-			dbc.editUser(user);}
-		else
-		{
-			System.out.println("User already deactived");
+			//System.out.print(user.getStatus());
+			dbc.editUser(user);
+			found = true;
 		}
-	}
-	
-	public void activateUser(Users user)
-	{
-		if(user.getStatus() == 'N') {
-			user.setStatus('Y');
-			dbc.editUser(user);}
-		else
+		else if(user.getStatus() == 'N')
 		{
-			System.out.println("User already active");
+			user.setStatus('Y');
+			dbc.editUser(user);
+			found = true;
+		}
+		if(found == false)
+		{
+			throw new IllegalArgumentException("User's status was not found");
 		}
 	}
 	
