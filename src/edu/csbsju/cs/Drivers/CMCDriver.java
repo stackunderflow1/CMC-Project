@@ -23,9 +23,8 @@ public class CMCDriver {
 		
 		
 		ArrayList<String> emp = new ArrayList<String>();
-		emp.add("MATH");
-		emp.add("COMPUTER-SCIENCE");
-		University university = new University("ANATOL", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
+		emp.add("LIBERAL-ARTS");
+		//emp.add("COMPUTER-SCIENCE");
 		
 		
 		System.out.println("********** LOG ON **********\n");
@@ -177,6 +176,9 @@ public class CMCDriver {
 			
 		}
 		
+		System.out.println("\n\n********** ADD USER WITH SAME USERNAME**********");
+		ai.addUser("Anton", "Andrews", "aandrews", "pass", 'u', 'Y');
+		
 		System.out.println("\n\n********** EDIT USER **********");
 		ai.editUser(dummy1.getUsername(),"I", "AmGroot", "pword", 'u', 'Y');
 		 allUsers = ai.getAllUsers();
@@ -196,7 +198,7 @@ public class CMCDriver {
 		System.out.println("\n\n********** DELETE USERS **********");
 		ai.deleteUser(dummy1);
 		ai.deleteUser(dummy);
-		System.out.println("*** Deletes All Newly Added Users***\n");
+		System.out.println("\n***Deletes All Newly Added Users***");
 		allUsers = ai.getAllUsers();
 		for(Users i: allUsers)
 		{
@@ -204,7 +206,50 @@ public class CMCDriver {
 		}
 		
 		System.out.println("\n\n********** ADD UNIVERSITY **********\n");
-		//ai.addUniversity(name, state, location, control, numStudents, females, SATV, SATM, expenses, financialAid, numApplicants, admitted, enrolled, academicScale, socialScale, qOLScale, emphasess);
+		ai.addUniversity("ANATOL", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
+		//ai.addUniversity("ABILENE CHRISTIAN UNIVERSITY", "TEXAS", "SUBURBAN", "PRIVATE", 10000, 50.0, -1, -1, 12088.0, 70, 4000, 90.0, 80.0, 2, 3, 3, emp);
+		ArrayList<University> univ = dbc.getAllSchoolDetails();
+		System.out.println("*** Newly Added University***\n");
+		University x1 = null;
+		for(University i: univ)
+		{
+			if (i.getName().equals("ANATOL"))
+					{
+			System.out.println(i.print());
+			x1 = i;
+					}
+		}
+		//ai.deleteSchool(x1);
+		
+		System.out.println("\n\n********** ADD UNIVERSITY WITH SAME NAME **********\n");
+		ai.addUniversity("ANATOL", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
+		
+		
+		System.out.println("\n\n********** EDIT UNIVERSITY **********\n");
+		ai.editSchool(x1.getName(),"ANATOL2", "MINNESOTA", "SUBURBAN", "PRIVATE", 9000, 56.0, 530.0, 500.0, 35000.0, 15000.0, 3000, 81.0, 75.0, 3, 3, 3, emp);
+		univ = dbc.getAllSchoolDetails();
+		System.out.println("*** Newly Edited University***\n");
+		for(University i: univ)
+		{
+			if (i.getName().equals("ANATOL2"))
+					{
+			System.out.println(i.print());
+					}
+		}
+		
+		System.out.println("\n\n********** DELETE UNIVERSITY **********\n");
+		ai.deleteSchool(x1);
+		for(University i: univ)
+		{
+			if (i.getName().equals(x1.getName()) || i.getName().equals("ANATOL1"))
+					{
+			System.out.println(i.print());
+			ai.deleteSchool(i);
+					}
+		}
+		
+		
+		
 		
 		
 		

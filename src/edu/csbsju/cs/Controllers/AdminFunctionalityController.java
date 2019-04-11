@@ -33,8 +33,12 @@ public class AdminFunctionalityController {
 	*/
 	public void addUser(Users newUser)
 	{
-	dbc.addUser(newUser);
-
+		int i = dbc.addUser(newUser);
+		if(i == -1)
+		{
+			System.out.print("Similar username is already there");
+			//throw new IllegalArgumentException("Similar username is already there");
+		}
 	}
 	/*
 	* Allows the admin to delete a user from the database
@@ -83,7 +87,12 @@ else if(!(status == 'Y' || status == 'N'))
 	*/
 	public void addUniversity(University uni)
 	{
-		dbc.addUniversity(uni);
+		boolean check = dbc.addUniversity(uni);
+		if (check == false)
+		{
+			System.out.println("Similar university name is already there");
+			//throw new IllegalArgumentException("Similar university name is already there");
+		}
 		
 	}
 	/*
@@ -126,7 +135,6 @@ else if(!(status == 'Y' || status == 'N'))
 			 int numApplicants, double admitted, double enrolled, int academicScale, int socialScale, 
 			 int qOLScale, ArrayList<String> emp) throws NameNotFoundException
 	{
-		boolean success = false;
 		ArrayList<University> univ = dbc.getAllSchoolDetails();
 		for (University x : univ)
 		{
@@ -152,13 +160,8 @@ else if(!(status == 'Y' || status == 'N'))
 		//University uni = new University(name, state, location, control, numStudents, females, SATV, SATM, expenses, financialAid, numApplicants, admitted, enrolled, academicScale, socialScale, qOLScale, emp);
 	
 		 dbc.editSchool(u);
-		 success = true;
 			}
-		}
-			if (success == false)
-			{
-				throw new IllegalArgumentException("School does not exist");
-			}
+	}
 	}
 	/*
 	* Allows the admin to deactivate a university in the database
@@ -186,6 +189,7 @@ else if(!(status == 'Y' || status == 'N'))
 		}
 		if(found == false)
 		{
+			//System.out.println("User's status was not found");
 			throw new IllegalArgumentException("User's status was not found");
 		}
 	}

@@ -12,7 +12,6 @@ import edu.csbsju.cs.Entity.Users;
 
 import java.util.*;
 
-import javax.naming.NameNotFoundException;
 
 /**
  * This class is the Database controller that allows a user to access the
@@ -146,12 +145,11 @@ public class DataBaseController {
 	public boolean addUniversity(University uni) {
 		boolean isNowThere = false;
 		if (!this.checkSchoolName(uni.getName())) {
-			isNowThere = true;
 			univDBlib.university_addUniversity(uni.getName(), uni.getState(), uni.getLocation(), uni.getControl(),
 					uni.getNumStudents(), uni.getFemales(), uni.getSATV(), uni.getSATM(), uni.getExpenses(),
 					uni.getFinancialAid(), uni.getNumApplicants(), uni.getAdmitted(), uni.getEnrolled(),
 					uni.getAcademicScale(), uni.getSocialScale(), uni.getqOLScale());
-
+			isNowThere = true;
 			ArrayList<String> emp = uni.getEmphases();
 			int i = 0;
 			while (i < emp.size()) {
@@ -194,11 +192,12 @@ public class DataBaseController {
 	 * @returns addSuccess
 	 *
 	 */
-	public void addUser(Users use) {
-
-		univDBlib.user_addUser(use.getFirstName(), use.getLastName(), use.getUsername(), use.getPassword(),
+	public int addUser(Users use) {
+		
+		int i = univDBlib.user_addUser(use.getFirstName(), use.getLastName(), use.getUsername(), use.getPassword(),
 				use.getType());
-
+		
+		return i;
 	}
 
 	/**
@@ -222,12 +221,12 @@ public class DataBaseController {
 				success = true;
 			}
 		}
-		if (success = true)
+		if (success == true)
 		
 			System.out.println("University Successfully Deleted");
 		
 		
-		else 
+		else if (success == false)
 			System.out.println("University Unsuccessfully Deleted");
 			
 	}
@@ -378,10 +377,15 @@ public class DataBaseController {
 					Double.parseDouble(allSchools1[x][12])+ " " + Integer.parseInt(allSchools1[x][13])+ " " +
 					Integer.parseInt(allSchools1[x][14])+ " " + Integer.parseInt(allSchools1[x][15]));
 			 University uni = allSchools2.get(x);
+			 found = true;
 			 return uni;
 		}
 		i++;
 	}
+			if(found == false)
+			{
+				throw new IllegalArgumentException("School not found");
+			}
 	return null;
 		/*ArrayList<University> list = getAllSchoolDetails();
 		boolean found = false;
